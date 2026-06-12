@@ -1,0 +1,66 @@
+/**
+ * Contentful CMS Integration
+ * ─────────────────────────────────────────────────────────────────────────────
+ * Setup:
+ *   1. Create a free Contentful account at https://contentful.com
+ *   2. Create a Space and note your Space ID
+ *   3. Create a Content Delivery API token
+ *   4. Add to .env.local:
+ *        CONTENTFUL_SPACE_ID=your_space_id
+ *        CONTENTFUL_ACCESS_TOKEN=your_access_token
+ *
+ * Content Types to create in Contentful:
+ *   - mosque_info     : name, address, phone, email, location, founded
+ *   - program         : title (Symbol), description (Text), icon, slug, order
+ *   - gallery_item    : title, image (Asset), category
+ *   - prayer_schedule : subuh, dzuhur, ashar, maghrib, isya (all Symbols)
+ *   - koperasi_product: name, description, icon (emoji), active (Boolean)
+ *   - announcement    : title, body (RichText), date, pinned (Boolean)
+ * ─────────────────────────────────────────────────────────────────────────────
+ */
+
+const SPACE   = process.env.CONTENTFUL_SPACE_ID    ?? "";
+const TOKEN   = process.env.CONTENTFUL_ACCESS_TOKEN ?? "";
+const BASE    = `https://cdn.contentful.com/spaces/${SPACE}/environments/default`;
+
+async function cfetch<T>(contentType: string, params = ""): Promise<T | null> {
+  if (!SPACE || !TOKEN) return null;
+  try {
+    const res = await fetch(
+      `${BASE}/entries?content_type=${contentType}&access_token=${TOKEN}${params}`,
+      { next: { revalidate: 3600 } } // ISR: revalidate every hour
+    );
+    if (!res.ok) return null;
+    return res.json() as Promise<T>;
+  } catch {
+    return null;
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function getContentfulPrayerSchedule(): Promise<Record<string, string> | null> {
+  const data = await cfetch<any>("prayer_schedule", "&limit=1");
+  if (!data?.items?.[0]) return null;
+  const f = data.items[0].fields;
+  return { subuh: f.subuh, dzuhur: f.dzuhur, ashar: f.ashar, maghrib: f.maghrib, isya: f.isya };
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function getContentfulPrograms(): Promise<any[] | null> {
+  const data = await cfetch<any>("program", "&order=fields.order");
+  if (!data?.items) return null;
+  return data.items.map((item: any) => item.fields);
+}
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function getContentfulGallery(): Promise<any[] | null> {
+  const data = await cfetch<any>("gallery_item");
+  if (!data?.items) return null;
+  return data.items.map((item: any) => ({
+    title: item.fields.title,
+    imageUrl: item.fields.image
+      ? `https:${data.includes?.Asset?.find((a: any) => a.sys.id === item.fields.image.sys.id)?.fields?.file?.url}`
+      : null,
+    category: item.fields.category,
+  }));
+}

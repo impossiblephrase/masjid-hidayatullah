@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme inline {
+  --color-green-50:  #f0fdf4;
+  --color-green-100: #dcfce7;
+  --color-green-200: #bbf7d0;
+  --color-green-300: #86efac;
+  --color-green-400: #4ade80;
+  --color-green-500: #22c55e;
+  --color-green-600: #16a34a;
+  --color-green-700: #15803d;
+  --color-green-800: #166534;
+  --color-green-900: #14532d;
+  --color-green-950: #052e16;
+  --color-gold-400:  #fbbf24;
+  --color-gold-500:  #f59e0b;
+  --color-gray-950:  #030712;
+
+  --font-display: "DM Serif Display", Georgia, serif;
+  --font-sans:    "Inter", system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-sans);
+  color: #1f2937;
+  background: white;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: var(--font-display); }
+
+/* ─── Navbar ──────────────────────────────────────────────────────────────── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  transition: all 0.3s;
+  padding: 1rem 1.5rem;
+}
+.navbar.scrolled {
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 8px -2px rgba(0,0,0,0.08);
+  border-bottom: 1px solid #f3f4f6;
+}
+.nav-link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  transition: color 0.2s;
+  text-decoration: none;
+}
+.nav-link:hover { color: white; }
+.navbar.scrolled .nav-link { color: #374151; }
+.navbar.scrolled .nav-link:hover { color: #15803d; }
+
+/* ─── Buttons ────────────────────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: #15803d; color: white;
+  font-weight: 600; font-size: 0.875rem;
+  text-decoration: none; transition: background 0.2s;
+  border: none; cursor: pointer; border-radius: 4px;
+}
+.btn-primary:hover { background: #166534; }
+
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border: 2px solid white; color: white;
+  font-weight: 600; font-size: 0.875rem;
+  text-decoration: none; transition: all 0.2s;
+  background: transparent; cursor: pointer; border-radius: 4px;
+}
+.btn-outline:hover { background: white; color: #15803d; }
+
+.btn-gold {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  background: #f59e0b; color: white;
+  font-weight: 600; font-size: 0.875rem;
+  text-decoration: none; transition: background 0.2s;
+  border: none; cursor: pointer; border-radius: 4px;
+}
+.btn-gold:hover { background: #d97706; }
+
+/* ─── Eyebrow ────────────────────────────────────────────────────────────── */
+.section-eyebrow {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.2em;
+  color: #15803d; margin-bottom: 1rem;
+}
+.section-eyebrow::before {
+  content: ''; display: block;
+  width: 2rem; height: 2px;
+  background: linear-gradient(to right, #15803d, #22c55e);
+  border-radius: 1px;
+}
+
+/* ─── Program Cards ──────────────────────────────────────────────────────── */
+.program-card {
+  background: white;
+  border: 1px solid #f0fdf4;
+  padding: 2rem;
+  transition: all 0.3s;
+  box-shadow: 0 1px 8px -2px rgba(0,0,0,0.06);
+  border-radius: 8px;
+}
+.program-card:hover {
+  border-color: #86efac;
+  box-shadow: 0 4px 32px -4px rgba(21,128,61,0.2);
+  transform: translateY(-2px);
+}
+.program-icon {
+  width: 3.5rem; height: 3.5rem;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #f0fdf4, #dcfce7);
+  border-radius: 12px;
+  margin-bottom: 1.25rem;
+  font-size: 1.5rem;
+}
+
+/* ─── Prayer Card ────────────────────────────────────────────────────────── */
+.prayer-card {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+.prayer-card:hover {
+  background: rgba(255,255,255,0.18);
+  transform: translateY(-2px);
+}
+
+/* ─── Koperasi Cards ─────────────────────────────────────────────────────── */
+.kop-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  padding: 1.5rem;
+  border-radius: 10px;
+  transition: all 0.3s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+.kop-card:hover {
+  border-color: #86efac;
+  box-shadow: 0 4px 20px rgba(21,128,61,0.15);
+}
+
+/* ─── Stats ──────────────────────────────────────────────────────────────── */
+.stat-item {
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+  padding: 2rem 1rem;
+}
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 3rem; color: white;
+  margin-bottom: 0.5rem; line-height: 1;
+}
+
+/* ─── Gallery ────────────────────────────────────────────────────────────── */
+.gallery-item {
+  position: relative; overflow: hidden;
+  border-radius: 8px; cursor: pointer;
+  transition: transform 0.3s;
+}
+.gallery-item:hover { transform: scale(1.02); }
+.gallery-item:hover .gallery-overlay { opacity: 1; }
+.gallery-overlay {
+  position: absolute; inset: 0;
+  background: rgba(21,128,61,0.7);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; transition: opacity 0.3s;
+}
+
+/* ─── Form ───────────────────────────────────────────────────────────────── */
+.form-input {
+  width: 100%; padding: 0.75rem 1rem;
+  background: white; border: 1px solid #e5e7eb;
+  color: #1f2937; font-size: 0.875rem;
+  outline: none; transition: border-color 0.2s;
+  font-family: var(--font-sans);
+  border-radius: 6px;
+}
+.form-input:focus { border-color: #15803d; box-shadow: 0 0 0 3px rgba(21,128,61,0.08); }
+
+/* ─── Reveal Animations ──────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0; transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-left {
+  opacity: 0; transform: translateX(-24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal-left.visible { opacity: 1; transform: translateX(0); }
+
+/* Hero animation */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up { animation: fadeUp 0.7s ease-out forwards; }
+
+/* Geometric Islamic pattern overlay */
+.islamic-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M30 0l7.5 13h15L45 26l7.5 13H37.5L30 52.5 22.5 39H7.5L15 26 7.5 13h15z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Arabesque divider */
+.divider-ornament {
+  display: flex; align-items: center; gap: 1rem;
+  color: #15803d; font-size: 1.25rem;
+}
+.divider-ornament::before, .divider-ornament::after {
+  content: ''; flex: 1; height: 1px;
+  background: linear-gradient(to right, transparent, #15803d, transparent);
+}
