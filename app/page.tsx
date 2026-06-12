@@ -519,16 +519,20 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
             <div className="lg:col-span-2">
-              <div className="flex items-center gap-3 mb-5">
-                <div className="w-10 h-10 flex items-center justify-center rounded-full flex-shrink-0"
-                     style={{ background: "linear-gradient(135deg, #15803d, #22c55e)" }}>
-                  <span className="text-white font-bold text-lg">☪</span>
+              <a href="#home" onClick={(e) => handleAnchor(e, "home")} className="flex items-center gap-3 mb-5 ">
+                <div className="w-13 h-13 flex items-center justify-center rounded-full flex-shrink-0">
+                     {/* style={{ background: "green-200" }}> */}
+                  <img 
+                    src="/mosque_logo.png" 
+                    alt="Logo Masjid Hidayatullah" 
+                    className="w-15 h-15 flex-shrink-0 object-contain"
+                  />
                 </div>
                 <div>
                   <div className="text-white font-semibold text-sm">Masjid Hidayatullah</div>
                   <div className="text-xs text-green-500">DKM Hidayatullah</div>
                 </div>
-              </div>
+              </a>
               <p className="text-sm leading-relaxed text-green-700 max-w-xs mb-6">
                 {t(lang, "footer_tagline")}
               </p>

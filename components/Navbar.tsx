@@ -46,10 +46,14 @@ export default function Navbar() {
     <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
       <div className="w-full px-4 lg:px-10 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" onClick={(e) => handleAnchor(e, "home")} className="flex items-center gap-3">
-          <div className="w-10 h-10 flex items-center justify-center flex-shrink-0 rounded-full"
-               style={{ background: "linear-gradient(135deg, #15803d, #22c55e)" }}>
-            <span className="text-white font-bold text-lg leading-none">☪</span>
+        <a href="#home" className="flex items-center gap-3">
+          <div className="w-15 h-15 flex items-center justify-center flex-shrink-0 rounded-full">
+              {/* //  style={{ background: "white" }}> */}
+            <img 
+              src="/mosque_logo.png" 
+              alt="Logo Masjid Hidayatullah" 
+              className="w-15 h-15 flex-shrink-0 object-contain"
+            />
           </div>
           <div className="leading-tight">
             <div className={`font-semibold text-sm tracking-wide transition-colors duration-300${scrolled ? " text-green-800" : " text-white"}`}>
