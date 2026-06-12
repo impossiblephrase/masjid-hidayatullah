@@ -46,7 +46,7 @@ export default function Navbar() {
     <nav className={`navbar${scrolled ? " scrolled" : ""}`}>
       <div className="w-full px-4 lg:px-10 flex items-center justify-between">
         {/* Logo */}
-        <a href="#home" className="flex items-center gap-3">
+        <a href="#home" onClick={(e) => handleAnchor(e, "home")} className="flex items-center gap-3">
           <div className="w-15 h-15 flex items-center justify-center flex-shrink-0 rounded-full">
               {/* //  style={{ background: "white" }}> */}
             <img 

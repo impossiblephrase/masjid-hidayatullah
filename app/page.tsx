@@ -519,7 +519,7 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
 
             <div className="lg:col-span-2">
-              <a href="#home" onClick={(e) => handleAnchor(e, "home")} className="flex items-center gap-3 mb-5 ">
+              <a href="#home" className="flex items-center gap-3 mb-5 ">
                 <div className="w-13 h-13 flex items-center justify-center rounded-full flex-shrink-0">
                      {/* style={{ background: "green-200" }}> */}
                   <img 
