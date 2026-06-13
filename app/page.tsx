@@ -20,7 +20,6 @@ const InstagramIcon = ({ className }: { className?: string }) => (
     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
   </svg>
 );
-import Navbar from "../components/Navbar";
 import ScrollReveal from "../components/ScrollReveal";
 import { useLang } from "../components/LangContext";
 import { t } from "./i18n";
@@ -98,8 +97,6 @@ export default function Home() {
 
   return (
     <>
-      <Navbar />
-
       {/* ══ HERO ══════════════════════════════════════════════════════════════ */}
       <section id="home" className="relative min-h-screen flex items-center overflow-hidden">
                {/* style={{ background: "linear-gradient(160deg, #052e16 0%, #14532d 40%, #166534 100%)" }}> */}
@@ -263,7 +260,9 @@ export default function Home() {
                   {t(lang, "pengumuman_title1")}{" "}
                   <em className="not-italic" style={{ color: "#15803d" }}>{t(lang, "pengumuman_title2")}</em>
                 </h2>
-                <p className="text-gray-500 max-w-sm">{t(lang, "pengumuman_desc")}</p>
+                <div className="flex flex-col items-start sm:items-end gap-2">
+                  <p className="text-gray-500 max-w-sm">{t(lang, "pengumuman_desc")}</p>
+                </div>
               </div>
             </ScrollReveal>
 
@@ -315,26 +314,33 @@ export default function Home() {
                         </a>
                       </div>
                     </div>
-                  </ScrollReveal>
+                  </ScrollReveal>   
                 );
               })}
+            </div>
+            <div className="mt-20 flex flex-col items-start sm:items-end gap-2">
+              <a href="/pengumuman" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-sm transition-colors">
+                        {t(lang, "pengumuman_lihat_semua")} <ArrowRight className="w-4 h-4" />
+              </a>
             </div>
           </div>
         </section>
       </section>
 
       {/* ══ PROGRAMS ══════════════════════════════════════════════════════════ */}
-      <section id="services" className="py-28 bg-gray-50">
+      <section id="services" className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <ScrollReveal className="max-w-2xl mb-16">
-            <span className="section-eyebrow">{t(lang, "programs_eyebrow")}</span>
-            <h2 className="text-4xl md:text-5xl text-gray-900 leading-tight"
-                style={{ fontFamily: "var(--font-display)" }}>
-              {t(lang, "programs_title1")}<br />
-              <em className="not-italic" style={{ color: "#15803d" }}>{t(lang, "programs_title2")}</em>
-            </h2>
-            <p className="text-gray-500 mt-4 text-lg leading-relaxed">{t(lang, "programs_desc")}</p>
-          </ScrollReveal>
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-16">
+            <ScrollReveal className="flex-1">
+              <span className="section-eyebrow">{t(lang, "programs_eyebrow")}</span>
+              <h2 className="text-4xl md:text-5xl text-gray-900 leading-tight"
+                  style={{ fontFamily: "var(--font-display)" }}>
+                {t(lang, "programs_title1")}<br />
+                <em className="not-italic" style={{ color: "#15803d" }}>{t(lang, "programs_title2")}</em>
+              </h2>
+              <p className="text-gray-500 mt-4 text-lg leading-relaxed">{t(lang, "programs_desc")}</p>
+            </ScrollReveal>
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {displayPrograms.map((prog: any, i) => (
@@ -357,6 +363,11 @@ export default function Home() {
                 </div>
               </ScrollReveal>
             ))}
+          </div>
+          <div className="mt-20 flex flex-col items-start sm:items-end gap-2">
+            <a href="/programs" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-sm transition-colors flex-shrink-0">
+              {t(lang, "programs_lihat_semua")} <ArrowRight className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </section>
@@ -463,16 +474,20 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
           {/* Header */}
-          <ScrollReveal className="text-center mb-16">
-            <span className="section-eyebrow mx-auto justify-center">{t(lang, "koperasi_eyebrow")}</span>
-            <h2 className="text-4xl md:text-5xl text-gray-900 leading-tight"
-                style={{ fontFamily: "var(--font-display)" }}>
-              {t(lang, "koperasi_title1")}{" "}
-              <em className="not-italic" style={{ color: "#15803d" }}>{t(lang, "koperasi_title2")}</em>
-            </h2>
-            <p className="text-gray-500 mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
-              {t(lang, "koperasi_desc")}
-            </p>
+          <ScrollReveal className="mb-16">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+              <div className="flex-1">
+                <span className="section-eyebrow">{t(lang, "koperasi_eyebrow")}</span>
+                <h2 className="text-4xl md:text-5xl text-gray-900 leading-tight"
+                    style={{ fontFamily: "var(--font-display)" }}>
+                  {t(lang, "koperasi_title1")}{" "}
+                  <em className="not-italic" style={{ color: "#15803d" }}>{t(lang, "koperasi_title2")}</em>
+                </h2>
+                <p className="text-gray-500 mt-4 max-w-2xl text-lg leading-relaxed">
+                  {t(lang, "koperasi_desc")}
+                </p>
+              </div>
+            </div>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
@@ -510,6 +525,11 @@ export default function Home() {
                   </ScrollReveal>
                 ))}
               </div>
+              <div className="mt-10 flex flex-col items-start sm:items-start gap-2">
+              <a href="/koperasi" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-sm transition-colors flex-shrink-0">
+                {t(lang, "koperasi_lihat_semua")} <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
             </div>
 
             {/* Sidebar */}
@@ -557,7 +577,6 @@ export default function Home() {
                 </div>
               </ScrollReveal>
             </div>
-
           </div>
         </div>
       </section>
@@ -565,13 +584,20 @@ export default function Home() {
       {/* ══ GALLERY ═══════════════════════════════════════════════════════════ */}
       <section id="gallery" className="py-28 bg-gray-50 overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <ScrollReveal className="text-center mb-14">
-            <span className="section-eyebrow mx-auto justify-center">{t(lang, "gallery_eyebrow")}</span>
-            <h2 className="text-4xl md:text-5xl text-gray-900 leading-tight"
-                style={{ fontFamily: "var(--font-display)" }}>
-              {t(lang, "gallery_title1")}{" "}
-              <em className="not-italic" style={{ color: "#15803d" }}>{t(lang, "gallery_title2")}</em>
-            </h2>
+          <ScrollReveal className="mb-14">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 text-center sm:text-left">
+              <div className="flex-1">
+                <span className="section-eyebrow">{t(lang, "gallery_eyebrow")}</span>
+                <h2 className="text-4xl md:text-5xl text-gray-900 leading-tight"
+                    style={{ fontFamily: "var(--font-display)" }}>
+                  {t(lang, "gallery_title1")}{" "}
+                  <em className="not-italic" style={{ color: "#15803d" }}>{t(lang, "gallery_title2")}</em>
+                </h2>
+              </div>
+              <a href="/galeri" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-sm transition-colors flex-shrink-0">
+                {t(lang, "gallery_lihat_semua")} <ArrowRight className="w-4 h-4" />
+              </a>
+            </div>
           </ScrollReveal>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -700,99 +726,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* ══ FOOTER ════════════════════════════════════════════════════════════ */}
-      <footer className="text-gray-400" style={{ background: "#031c0e" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-
-            <div className="lg:col-span-2">
-              <a href="#home" className="flex items-center gap-3 mb-5 ">
-                <div className="w-13 h-13 flex items-center justify-center rounded-full flex-shrink-0">
-                     {/* style={{ background: "green-200" }}> */}
-                  <img 
-                    src="/mosque_logo.png" 
-                    alt="Logo Masjid Hidayatullah" 
-                    className="w-15 h-15 flex-shrink-0 object-contain"
-                  />
-                </div>
-                <div>
-                  <div className="text-white font-semibold text-sm">Masjid Hidayatullah</div>
-                  <div className="text-xs text-green-500">DKM Hidayatullah</div>
-                </div>
-              </a>
-              <p className="text-sm leading-relaxed text-green-700 max-w-xs mb-6">
-                {t(lang, "footer_tagline")}
-              </p>
-
-              {/* Social Media Icons */}
-              <div className="mb-4">
-                <p className="text-xs text-white uppercase font-semibold tracking-wider mb-3">
-                  {t(lang, "footer_social")}
-                </p>
-                <div className="flex gap-3">
-                <a href={MOSQUE.FACEBOOK} target="_blank" rel="noopener noreferrer"
-                     className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-green-700 hover:border-green-400"
-                     aria-label="Facebook DKM Hidayatullah">
-                    <FacebookIcon className="w-4 h-4 text-green-700" />
-                  </a>
-                  <a href={MOSQUE.INSTAGRAM} target="_blank" rel="noopener noreferrer"
-                     className="w-9 h-9 rounded-full flex items-center justify-center transition-all hover:scale-110 border border-green-700 hover:border-green-400"
-                     aria-label="Instagram DKM Hidayatullah">
-                    <InstagramIcon className="w-4 h-4 text-green-700" />
-                  </a>
-                </div>
-              </div>
-
-              <p className="text-xs text-green-700">
-                Est. {MOSQUE.FOUNDED} · {MOSQUE.LOCATION}
-              </p>
-            </div>
-
-            <div>
-              <h4 className="text-white text-sm font-semibold mb-4">{t(lang, "footer_program")}</h4>
-              <ul className="space-y-2.5 text-sm">
-                {PROGRAMS.map(p => (
-                  <li key={p.slug}>
-                    <a href="#services" className="text-green-700 hover:text-green-400 transition-colors">
-                      {p.title[lang as keyof typeof p.title]}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-white text-sm font-semibold mb-4">{t(lang, "footer_links")}</h4>
-              <ul className="space-y-3 text-sm">
-                <li className="flex items-start gap-2.5">
-                  <MapPin className="w-4 h-4 flex-shrink-0 mt-0.5 text-green-700" />
-                  <span className="leading-relaxed text-green-700">{MOSQUE.ADDRESS}</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <Phone className="w-4 h-4 flex-shrink-0 text-green-700" />
-                  <a href={`tel:${MOSQUE.PHONE}`} className="text-green-700 hover:text-green-400 transition-colors">
-                    {MOSQUE.PHONE}
-                  </a>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <Mail className="w-4 h-4 flex-shrink-0 text-green-700" />
-                  <a href={`mailto:${MOSQUE.EMAIL}`} className="text-green-700 hover:text-green-400 transition-colors">
-                    {MOSQUE.EMAIL}
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-          </div>
-
-          <div className="mt-14 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-green-900"
-               style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-            <p>&copy; {year} {t(lang, "footer_copy")}</p>
-            <p>{MOSQUE.LOCATION}</p>
-          </div>
-        </div>
-      </footer>
     </>
   );
 }

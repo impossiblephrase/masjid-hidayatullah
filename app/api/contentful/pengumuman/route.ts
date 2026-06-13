@@ -5,13 +5,8 @@ const TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN ?? "";
 const BASE = `https://cdn.contentful.com/spaces/${SPACE}/environments/master`;
 
 function unwrap(field: any): any {
-  if (field === undefined || field === null) return field;
-  if (typeof field === "object" && !Array.isArray(field)) {
-    return {
-      id: field["id-ID"] ?? field.id ?? "",
-      en: field["en-US"] ?? field.en ?? "",
-      ko: field["ko-KR"] ?? field.ko ?? "",
-    };
+  if (field?.en !== undefined) {
+    return { id: field.id ?? "", en: field.en ?? "", ko: field.ko ?? "" };
   }
   return field;
 }
@@ -23,7 +18,7 @@ export async function GET() {
 
   try {
     const res = await fetch(
-      `${BASE}/entries?content_type=programMasjid&order=fields.slug&access_token=${TOKEN}`,
+      `${BASE}/entries?content_type=pengumumanMasjid&order=-fields.pinned,-fields.tanggal&access_token=${TOKEN}`,
       { next: { revalidate: 3600 } }
     );
 
@@ -39,30 +34,30 @@ export async function GET() {
       .filter((item: any) => item.fields.aktif !== false)
       .map((item: any) => {
         const fields = item.fields;
-        let imageUrl: string | null = null;
+        let gambarUrl: string | undefined;
 
-        if (fields.image?.sys?.id) {
-          const asset = assets.find((a: any) => a.sys.id === fields.image.sys.id);
+        if (fields.gambar?.sys?.id) {
+          const asset = assets.find((a: any) => a.sys.id === fields.gambar.sys.id);
           if (asset?.fields?.file?.url) {
-            imageUrl = `https:${asset.fields.file.url}`;
+            gambarUrl = `https:${asset.fields.file.url}`;
           }
         }
 
         return {
           id: item.sys.id,
-          slug: fields.slug,
-          title: unwrap(fields.title),
-          description: unwrap(fields.description),
-          icon: fields.icon ?? "mosque",
-          imageUrl,
-          schedule: unwrap(fields.schedule),
+          judul: unwrap(fields.judul),
+          isi: unwrap(fields.isi),
+          tanggal: fields.tanggal,
+          kategori: fields.kategori ?? "umum",
+          pinned: fields.pinned ?? false,
           aktif: fields.aktif ?? true,
+          gambar: gambarUrl,
         };
       });
 
     return NextResponse.json(normalized);
   } catch (error) {
-    console.error("Error fetching programs from Contentful:", error);
+    console.error("Error fetching pengumuman from Contentful:", error);
     return NextResponse.json([], { status: 200 });
   }
 }

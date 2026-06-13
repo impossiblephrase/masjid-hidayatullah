@@ -8,7 +8,9 @@ export const TRANSLATIONS = {
     nav_about:      "Tentang",
     nav_services:   "Program",
     nav_jadwal:     "Jadwal",
+    nav_programs:   "Program",
     nav_koperasi:   "Koperasi",
+    nav_pengumuman:  "Pengumuman",
     nav_gallery:    "Galeri",
     nav_contact:    "Kontak",
     nav_cta:        "Hubungi Kami",
@@ -58,7 +60,7 @@ export const TRANSLATIONS = {
     programs_eyebrow: "Kegiatan",
     programs_title1:  "Program",
     programs_title2:  "Masjid",
-    programs_desc:    "Berbagai kegiatan untuk memenuhi kebutuhan spiritual, sosial, dan pendidikan jamaah.",
+    programs_desc:    "Berbagai kegiatan rutin, sosial dan pendidikan jamaah.",
 
     // Prayer Schedule
     jadwal_lokasi: "Busan, Korea Selatan",
@@ -147,6 +149,50 @@ export const TRANSLATIONS = {
      kop_section_title2:   "Koperasi",
      kop_section_desc:     "Produk halal pilihan untuk kebutuhan ibadah dan sehari-hari jamaah.",
      kop_section_cta:      "Lihat Semua Produk →",
+
+    // Pengumuman Page
+    pengumuman_page_title1:    "Info &",
+    pengumuman_page_title2:    "Pengumuman",
+    pengumuman_page_desc:      "Informasi terkini seputar kegiatan dan program Masjid Hidayatullah.",
+    pengumuman_back:           "← Kembali ke Beranda",
+    pengumuman_filter_all:     "Semua",
+    pengumuman_loading:        "Memuat pengumuman...",
+    pengumuman_empty:          "Belum ada pengumuman.",
+    pengumuman_no_image:       "Tidak ada gambar",
+    pengumuman_read_more:      "Selengkapnya",
+    pengumuman_contentful_note: "Konten pengumuman dapat dikelola melalui",
+    pengumuman_contentful_guide: "Lihat",
+    pengumuman_lihat_semua: "Lihat Semua Pengumuman",
+
+    // Programs Page
+    galeri_page_title1:        "Momen",
+    galeri_page_title2:        "Kebersamaan",
+    galeri_page_desc:          "Koleksi foto kegiatan dan momen spesial Masjid Hidayatullah.",
+    galeri_back:               "← Kembali ke Beranda",
+    galeri_filter_label:       "Filter Kategori:",
+    galeri_filter_all:         "Semua",
+    galeri_loading:            "Memuat galeri...",
+    galeri_empty:              "Belum ada foto di galeri.",
+    galeri_contentful_note:    "Foto galeri dapat dikelola melalui",
+    galeri_contentful_guide:   "Lihat",
+
+    // Programs Page
+    programs_title1:       "Program &",
+    programs_title2:       "Kegiatan",
+    programs_desc:         "Berbagai program dan kegiatan rutin Masjid Hidayatullah untuk memenuhi kebutuhan spiritual dan sosial jamaah.",
+    programs_schedule:     "Jadwal",
+    programs_learn_more:   "Pelajari Lebih Lanjut",
+    programs_loading:      "Memuat program...",
+    programs_empty:        "Belum ada program.",
+    programs_contentful_note: "Konten program dapat dikelola melalui",
+    programs_contentful_guide: "Lihat",
+    programs_lihat_semua: "Lihat Semua Program",
+
+    // Koperasi Page
+    koperasi_lihat_semua: "Lihat Semua Produk",
+
+    // Gallery Page
+    gallery_lihat_semua: "Lihat Semua Galeri",
   },
 
   en: {
@@ -154,7 +200,9 @@ export const TRANSLATIONS = {
     nav_about:      "About",
     nav_services:   "Programs",
     nav_jadwal:     "Schedule",
+    nav_programs:   "Programs",
     nav_koperasi:   "Cooperative",
+    nav_pengumuman:  "Announcements",
     nav_gallery:    "Gallery",
     nav_contact:    "Contact",
     nav_cta:        "Contact Us",
@@ -197,7 +245,7 @@ export const TRANSLATIONS = {
     about_location: "Jangnim, Busan. South Korea",
 
     programs_eyebrow: "Activities",
-    programs_title1:  "Mosque",
+    programs_title:  "Mosque",
     programs_title2:  "Programs",
     programs_desc:    "Various activities to meet the spiritual, social, and educational needs of our congregation.",
 
@@ -281,6 +329,50 @@ export const TRANSLATIONS = {
      kop_section_title2:   "Cooperative",
      kop_section_desc:     "Halal products for worship and daily needs of the congregation.",
      kop_section_cta:      "View All Products →",
+
+    // Pengumuman Page
+    pengumuman_page_title1:    "News &",
+    pengumuman_page_title2:    "Announcements",
+    pengumuman_page_desc:      "Latest information about Masjid Hidayatullah activities and programs.",
+    pengumuman_back:           "← Back to Home",
+    pengumuman_filter_all:     "All",
+    pengumuman_loading:        "Loading announcements...",
+    pengumuman_empty:          "No announcements yet.",
+    pengumuman_no_image:       "No image",
+    pengumuman_read_more:      "Read More",
+    pengumuman_contentful_note: "Announcements can be managed through",
+    pengumuman_contentful_guide: "See",
+    pengumuman_lihat_semua: "View All Announcements",
+
+    // Programs Page
+    galeri_page_title1:        "Moments of",
+    galeri_page_title2:        "Togetherness",
+    galeri_page_desc:          "Collection of photos from Masjid Hidayatullah activities and special moments.",
+    galeri_back:               "← Back to Home",
+    galeri_filter_label:       "Filter Category:",
+    galeri_filter_all:         "All",
+    galeri_loading:            "Loading gallery...",
+    galeri_empty:              "No photos in gallery yet.",
+    galeri_contentful_note:    "Gallery photos can be managed through",
+    galeri_contentful_guide:   "See",
+
+    // Programs Page
+    programs_title1:       "Activities",
+    programs_title2:       "Programs",
+    programs_desc:         "Various programs and regular activities of Masjid Hidayatullah to meet the spiritual and social needs of the congregation.",
+    programs_schedule:     "Schedule",
+    programs_learn_more:   "Learn More",
+    programs_loading:      "Loading programs...",
+    programs_empty:        "No programs yet.",
+    programs_contentful_note: "Program content can be managed through",
+    programs_contentful_guide: "See",
+    programs_lihat_semua: "View All Programs",
+
+    // Koperasi Page
+    koperasi_lihat_semua: "View All Products",
+
+    // Gallery Page
+    gallery_lihat_semua: "View All Gallery",
   },
 
   ko: {
@@ -288,7 +380,9 @@ export const TRANSLATIONS = {
     nav_about:      "소개",
     nav_services:   "프로그램",
     nav_jadwal:     "예배 일정",
+    nav_programs:   "프로그램",
     nav_koperasi:   "협동조합",
+    nav_pengumuman:  "공지사항",
     nav_gallery:    "갤러리",
     nav_contact:    "연락처",
     nav_cta:        "문의하기",
@@ -415,6 +509,50 @@ export const TRANSLATIONS = {
      kop_section_title2:   "협동조합",
      kop_section_desc:     "신도들의 예배와 일상에 필요한 할랄 제품 모음.",
      kop_section_cta:      "전체 상품 보기 →",
+
+    // Pengumuman Page
+    pengumuman_page_title1:    "소식 &",
+    pengumuman_page_title2:    "공지사항",
+    pengumuman_page_desc:      "히다야투라 모스크 활동 및 프로그래에 관한 최신 정보.",
+    pengumuman_back:           "← 홈으로 돌아가기",
+    pengumuman_filter_all:     "전체",
+    pengumuman_loading:        "공지사항을 불러오는 중...",
+    pengumuman_empty:          "아직 공지사항이 없습니다.",
+    pengumuman_no_image:       "이미지 없음",
+    pengumuman_read_more:      "자세히 보기",
+    pengumuman_contentful_note: "공지사항은 다음을 통해 관리할 수 있습니다:",
+    pengumuman_contentful_guide: "참조",
+    pengumuman_lihat_semua: "모든 공지사항 보기",
+
+    // Galeri Page
+    galeri_page_title1:        "함께하는",
+    galeri_page_title2:        "순간들",
+    galeri_page_desc:          "히다야투라 모스크 활동과 스페셜 순간들의 사진 모음.",
+    galeri_back:               "← 홈으로 돌아가기",
+    galeri_filter_label:       "카테고리 필터:",
+    galeri_filter_all:         "전체",
+    galeri_loading:            "갤러리를 불러오는 중...",
+    galeri_empty:              "아직 갤러리에 사진이 없습니다.",
+    galeri_contentful_note:    "갤러리 사진는 다음을 통해 관리할 수 있습니다:",
+    galeri_contentful_guide:   "참조",
+
+    // Programs Page
+    programs_title1:       "프로그램",
+    programs_title2:       "활동",
+    programs_desc:         "히다야툴라 모스크의 다양한 프로그램과 정기 활동으로 신도들의 영적 및 사회적 요구를 충족시킵니다.",
+    programs_schedule:     "일정",
+    programs_learn_more:   "더 알아보기",
+    programs_loading:      "프로그램을 불러오는 중...",
+    programs_empty:        "아직 프로그램이 없습니다.",
+    programs_contentful_note: "프로그램 내용은 다음을 통해 관리할 수 있습니다:",
+    programs_contentful_guide: "참조",
+    programs_lihat_semua: "모든 프로그램 보기",
+
+    // Koperasi Page
+    koperasi_lihat_semua: "모든 제품 보기",
+
+    // Gallery Page
+    gallery_lihat_semua: "모든 갤러리 보기",
   },
 };
 

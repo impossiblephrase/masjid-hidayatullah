@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { LangProvider } from "../components/LangContext";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 export const metadata: Metadata = {
   title: "Masjid Hidayatullah – Jangnim, Busan",
@@ -17,7 +19,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="id">
       <body>
         <LangProvider>
-          {children}
+          <Navbar />
+          <main>
+            {children}
+          </main>
+          <Footer />
         </LangProvider>
       </body>
     </html>

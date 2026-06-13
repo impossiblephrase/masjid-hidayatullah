@@ -1,5 +1,5 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { Search, ShoppingBag, Phone, Clock, Tag, Megaphone, CheckCircle, XCircle, ChevronRight } from "lucide-react";
 import Link from "next/link";
 import { useLang } from "../../components/LangContext";
@@ -17,17 +17,60 @@ export default function KoperasiPage() {
   const { lang } = useLang();
   const [activeKat, setActiveKat] = useState<KategoriKey>("semua");
   const [search, setSearch]       = useState("");
+  const [produkCMS, setProdukCMS] = useState<any[] | null>(null);
+  const [pengumumanCMS, setPengumumanCMS] = useState<any[] | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  // Fetch dari Contentful
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const [prodRes, pengRes] = await Promise.all([
+          fetch("/api/contentful/koperasi"),
+          fetch("/api/contentful/pengumuman")
+        ]);
+        
+        if (prodRes.ok) {
+          const prodData = await prodRes.json();
+          setProdukCMS(prodData);
+        }
+        
+        if (pengRes.ok) {
+          const pengData = await pengRes.json();
+          setPengumumanCMS(pengData);
+        }
+      } catch (err) {
+        console.error("Error fetching koperasi data:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  // Gunakan data dari Contentful jika tersedia, fallback ke data statis
+  const displayProduk = produkCMS ?? PRODUK_LIST;
+  const displayPengumuman = pengumumanCMS ?? PENGUMUMAN_LIST;
 
   const produkFiltered = useMemo(() => {
-    return PRODUK_LIST.filter(p => {
+    return displayProduk.filter(p => {
       const matchKat  = activeKat === "semua" || p.kategori === activeKat;
-      const nameLower = p.nama[lang as keyof typeof p.nama].toLowerCase();
+      
+      // Handle both static data (with localized names) and CMS data (with nama object)
+      let nameLower = "";
+      if (typeof p.nama === "string") {
+        nameLower = p.nama.toLowerCase();
+      } else if (p.nama && typeof p.nama === "object") {
+        nameLower = (p.nama[lang as keyof typeof p.nama] || "").toLowerCase();
+      }
+      
       const matchSearch = search === "" || nameLower.includes(search.toLowerCase());
       return matchKat && matchSearch;
     });
-  }, [activeKat, search, lang]);
+  }, [activeKat, search, lang, displayProduk]);
 
-  const pengumumanAktif = PENGUMUMAN_LIST.filter(p => p.aktif);
+  const pengumumanAktif = displayPengumuman.filter(p => p.aktif);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -88,7 +131,18 @@ export default function KoperasiPage() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {pengumumanAktif.map(p => {
-                const badge = TIPE_BADGE[p.tipe] ?? TIPE_BADGE.info;
+                // Determine badge style - for CMS data use tipe field, for static data use tipe
+                const tipeField = p.tipe || "info";
+                const badge = TIPE_BADGE[tipeField] ?? TIPE_BADGE.info;
+                
+                // Handle both static (localized) and CMS data
+                const judulText = typeof p.judul === "string" 
+                  ? p.judul 
+                  : p.judul[lang as keyof typeof p.judul];
+                const isiText = typeof p.isi === "string"
+                  ? p.isi
+                  : p.isi[lang as keyof typeof p.isi];
+                
                 return (
                   <div key={p.id} className="bg-white rounded-xl p-5 border border-gray-100 shadow-sm flex gap-4">
                     <div className="flex-shrink-0 w-10 h-10 rounded-lg flex items-center justify-center"
@@ -104,10 +158,10 @@ export default function KoperasiPage() {
                         <span className="text-gray-400 text-xs">{p.tanggal}</span>
                       </div>
                       <h3 className="font-semibold text-gray-900 text-sm mb-1">
-                        {p.judul[lang as keyof typeof p.judul]}
+                        {judulText}
                       </h3>
                       <p className="text-gray-500 text-sm leading-relaxed">
-                        {p.isi[lang as keyof typeof p.isi]}
+                        {isiText}
                       </p>
                     </div>
                   </div>
@@ -155,8 +209,13 @@ export default function KoperasiPage() {
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {produkFiltered.map(prod => {
-              const nama = prod.nama[lang as keyof typeof prod.nama];
-              const desc = prod.deskripsi[lang as keyof typeof prod.deskripsi];
+              // Handle both static data (with localized names) and CMS data (with nama object)
+              const nama = typeof prod.nama === "string"
+                ? prod.nama
+                : prod.nama[lang as keyof typeof prod.nama];
+              const desc = typeof prod.deskripsi === "string"
+                ? prod.deskripsi
+                : prod.deskripsi[lang as keyof typeof prod.deskripsi];
               const katLabel = KATEGORI_LIST.find(k => k.key === prod.kategori)?.label[lang as keyof typeof KATEGORI_LIST[0]["label"]] ?? prod.kategori;
 
               return (
@@ -164,12 +223,22 @@ export default function KoperasiPage() {
                      className="bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all flex flex-col">
 
                   {/* Image / Emoji area */}
-                  <div className="h-36 flex items-center justify-center text-5xl"
-                       style={{ background: prod.tersedia
-                         ? "linear-gradient(135deg, #f0fdf4, #dcfce7)"
-                         : "#f9fafb" }}>
-                    {prod.emoji}
-                  </div>
+                  {prod.gambarUrl ? (
+                    <div className="h-36 overflow-hidden bg-gray-100">
+                      <img
+                        src={prod.gambarUrl}
+                        alt={nama}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ) : (
+                    <div className="h-36 flex items-center justify-center text-5xl"
+                         style={{ background: prod.tersedia
+                           ? "linear-gradient(135deg, #f0fdf4, #dcfce7)"
+                           : "#f9fafb" }}>
+                      {prod.emoji}
+                    </div>
+                  )}
 
                   {/* Content */}
                   <div className="p-4 flex flex-col flex-1">
