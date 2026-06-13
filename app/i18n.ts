@@ -29,6 +29,7 @@ export const TRANSLATIONS = {
 
     // About
     about_eyebrow:  "Tentang Kami",
+    about_quote: "Masjid yang makmur, umat yang berdaya.",
     about_title1:   "Rumah Ibadah,",
     about_title2:   "Pusat Kebaikan",
     about_desc1:    "Masjid Hidayatullah berdiri sebagai pusat kegiatan keislaman yang melayani jamaah di Jangnim, Busan. Korea Selatan. Kami berkomitmen untuk menjadi rumah bagi setiap muslim yang ingin memperkuat iman dan mempererat tali silaturahmi.",
@@ -47,6 +48,7 @@ export const TRANSLATIONS = {
     programs_desc:    "Berbagai kegiatan untuk memenuhi kebutuhan spiritual, sosial, dan pendidikan jamaah.",
 
     // Prayer Schedule
+    jadwal_lokasi: "Busan, Korea Selatan",
     jadwal_eyebrow:  "Waktu Sholat",
     jadwal_title1:   "Jadwal",
     jadwal_title2:   "Sholat",
@@ -56,7 +58,13 @@ export const TRANSLATIONS = {
     jadwal_maghrib:  "Maghrib",
     jadwal_isya:     "Isya",
     jadwal_jumat:    "Sholat Jumat",
-    jadwal_note:     "* Waktu sholat dapat berubah mengikuti kalender Kemenag RI. Silakan cek secara berkala.",
+    jadwal_iqomah:   "Iqomah",
+    jadwal_adzan:    "Adzan",
+    jadwal_mulai:    "Mulai",
+    jadwal_selesai:  "Selesai",
+    jadwal_setiap_jumat: "Setiap Jumat",
+    jadwal_khatib:   "Khatib & Imam bergantian setiap pekan",
+    jadwal_note: "* Waktu sholat dihitung otomatis berdasarkan lokasi Busan, Korea Selatan. Dapat berbeda sedikit dengan jadwal lokal masjid.",
 
     // Koperasi
     koperasi_eyebrow:   "Koperasi Masjid",
@@ -88,6 +96,10 @@ export const TRANSLATIONS = {
     contact_name:    "Nama Lengkap",
     contact_msg:     "Pesan",
     contact_send:    "Kirim Pesan",
+    contact_placeholder_name:  "Ahmad Fauzi",
+    contact_placeholder_email: "ahmad@email.com",
+    contact_placeholder_msg:   "Tulis pesan Anda...",
+  
 
     // Footer
     footer_tagline:  "Pusat ibadah dan kegiatan Islam di Jangnim, Busan. Korea Selatan.",
@@ -128,6 +140,7 @@ export const TRANSLATIONS = {
     stat_kajian:    "Study Circles / Month",
 
     about_eyebrow:  "About Us",
+    about_quote: "A prosperous mosque, an empowered community.",
     about_title1:   "House of Worship,",
     about_title2:   "Center of Goodness",
     about_desc1:    "Masjid Hidayatullah stands as a center of Islamic activities serving the congregation in Jangnim, Busan. South Korea. We are committed to being a home for every Muslim seeking to strengthen their faith.",
@@ -145,6 +158,7 @@ export const TRANSLATIONS = {
     programs_desc:    "Various activities to meet the spiritual, social, and educational needs of our congregation.",
 
     jadwal_eyebrow:  "Prayer Times",
+    jadwal_lokasi: "Busan, South Korea",
     jadwal_title1:   "Prayer",
     jadwal_title2:   "Schedule",
     jadwal_subuh:    "Fajr",
@@ -153,7 +167,13 @@ export const TRANSLATIONS = {
     jadwal_maghrib:  "Maghrib",
     jadwal_isya:     "Isha",
     jadwal_jumat:    "Friday Prayer",
-    jadwal_note:     "* Prayer times may vary. Please check regularly with the Ministry of Religious Affairs calendar.",
+    jadwal_iqomah:   "Iqamah",
+    jadwal_adzan:    "Adhan",
+    jadwal_mulai:    "Start",
+    jadwal_selesai:  "End",
+    jadwal_setiap_jumat: "Every Friday",
+    jadwal_khatib:   "Khatib & Imam rotate each week",
+    jadwal_note: "* Prayer times are automatically calculated based on Busan, South Korea. May slightly differ from the mosque's local schedule.",
 
     koperasi_eyebrow:   "Mosque Cooperative",
     koperasi_title1:    "Store &",
@@ -182,6 +202,9 @@ export const TRANSLATIONS = {
     contact_name:    "Full Name",
     contact_msg:     "Message",
     contact_send:    "Send Message",
+    contact_placeholder_name:  "John Doe",
+    contact_placeholder_email: "john@email.com",
+    contact_placeholder_msg:   "Write your message...",
 
     footer_tagline:  "Center of Islamic worship and activities in Jangnim, Busan. South Korea.",
     footer_links:    "Links",
@@ -220,6 +243,7 @@ export const TRANSLATIONS = {
     stat_kajian:    "월간 학습 모임",
 
     about_eyebrow:  "소개",
+    about_quote: "번영하는 모스크, 역량있는 공동체.",
     about_title1:   "예배의 집,",
     about_title2:   "선의 중심지",
     about_desc1:    "부산 히다야툴라 이슬람센터에서 신도들을 섬기는 이슬람 활동의 중심지입니다. 우리는 믿음을 강화하고 유대를 다지고자 하는 모든 무슬림의 집이 되고자 합니다.",
@@ -237,6 +261,7 @@ export const TRANSLATIONS = {
     programs_desc:    "신도들의 영적, 사회적, 교육적 필요를 충족시키는 다양한 활동.",
 
     jadwal_eyebrow:  "예배 시간",
+    jadwal_lokasi: "부산, 대한민국",
     jadwal_title1:   "예배",
     jadwal_title2:   "일정",
     jadwal_subuh:    "파즈르",
@@ -245,7 +270,13 @@ export const TRANSLATIONS = {
     jadwal_maghrib:  "마그립",
     jadwal_isya:     "이샤",
     jadwal_jumat:    "금요 예배",
-    jadwal_note:     "* 예배 시간은 변경될 수 있습니다. 정기적으로 확인해 주세요.",
+    jadwal_iqomah:   "이카마",
+    jadwal_adzan:    "아잔",
+    jadwal_mulai:    "시작",
+    jadwal_selesai:  "종료",
+    jadwal_setiap_jumat: "매주 금요일",
+    jadwal_khatib:   "카팁 & 이맘은 매주 교대합니다",
+    jadwal_note: "* 예배 시간은 부산, 한국 위치를 기반으로 자동 계산됩니다. 모스크 현지 일정과 약간 다를 수 있습니다.",
 
     koperasi_eyebrow:   "마스지드 협동조합",
     koperasi_title1:    "상점 및",
@@ -273,6 +304,9 @@ export const TRANSLATIONS = {
     contact_email:   "이메일",
     contact_name:    "성명",
     contact_msg:     "메시지",
+    contact_placeholder_name:  "홍길동",
+    contact_placeholder_email: "hong@email.com",
+    contact_placeholder_msg:   "메시지를 입력하세요...",
     contact_send:    "메시지 보내기",
 
     footer_tagline:  "장림동, 부산의 이슬람 예배 및 활동 중심지.",
@@ -289,6 +323,8 @@ export const TRANSLATIONS = {
     cta_btn2:     "기부하기",
   },
 };
+
+
 
 export type TKey = keyof typeof TRANSLATIONS.id;
 

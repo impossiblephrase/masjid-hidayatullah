@@ -1,4 +1,5 @@
 "use client";
+import { useState, useEffect } from "react";
 import {
   ArrowRight, Phone, MapPin, Mail, Clock,
   BookOpen, Heart, Users, ShoppingBag, Star, CheckCircle,
@@ -33,9 +34,51 @@ const PROGRAM_ICONS: Record<string, React.ReactNode> = {
   store:   <ShoppingBag className="w-6 h-6 text-green-700" />,
 };
 
+// ── Helper: hitung waktu Jumat dari Dhuhr ────────────────────
+function calcJumat(dhuhrStr: string) {
+  if (!dhuhrStr) return { adzan: "--:--", mulai: "--:--", selesai: "--:--" };
+  const [h, m] = dhuhrStr.split(":").map(Number);
+  const totalMenit = h * 60 + m;
+
+  const mulaiRaw = totalMenit - 20;
+  const mulai = Math.floor(mulaiRaw / 5) * 5;
+
+  const selesaiRaw = totalMenit + 40;
+  const selesai = Math.ceil(selesaiRaw / 5) * 5;
+
+  const fmt = (t: number) =>
+    `${String(Math.floor(t / 60)).padStart(2, "0")}:${String(t % 60).padStart(2, "0")}`;
+
+  return { adzan: dhuhrStr, mulai: fmt(mulai), selesai: fmt(selesai) };
+}
+
 export default function Home() {
   const { lang } = useLang();
   const year = new Date().getFullYear();
+
+  // ── Aladhan API ──────────────────────────────────────────────
+  const [prayerTimes, setPrayerTimes] = useState<Record<string, string>>({});
+  const [prayerLoading, setPrayerLoading] = useState(true);
+  const [prayerDate, setPrayerDate] = useState("");
+
+  useEffect(() => {
+    fetch("https://api.aladhan.com/v1/timingsByCity?city=Busan&country=KR&method=3")
+      .then(r => r.json())
+      .then(data => {
+        setPrayerTimes(data.data.timings);
+        setPrayerDate(data.data.date.readable);
+        setPrayerLoading(false);
+      })
+      .catch(() => setPrayerLoading(false));
+  }, []);
+
+  const PRAYER_LIVE = [
+    { key: "jadwal_subuh"   as const, apiKey: "Fajr"    },
+    { key: "jadwal_dzuhur"  as const, apiKey: "Dhuhr"   },
+    { key: "jadwal_ashar"   as const, apiKey: "Asr"     },
+    { key: "jadwal_maghrib" as const, apiKey: "Maghrib" },
+    { key: "jadwal_isya"    as const, apiKey: "Isha"    },
+  ];
 
   return (
     <>
@@ -140,7 +183,7 @@ export default function Home() {
                      style={{ background: "linear-gradient(135deg, #166534, #15803d)" }}>
                   <div className="text-3xl mb-3">🕌</div>
                   <p className="text-xl leading-snug" style={{ fontFamily: "var(--font-display)" }}>
-                    &ldquo;Masjid yang makmur, umat yang berdaya.&rdquo;
+                    &ldquo;{t(lang, "about_quote")}&rdquo;
                   </p>
                 </div>
                 <div className="p-6 flex flex-col justify-center text-white rounded-lg"
@@ -153,7 +196,7 @@ export default function Home() {
                 <div className="p-6 flex flex-col justify-center text-white rounded-lg"
                      style={{ background: "#14532d" }}>
                   <div className="text-4xl" style={{ fontFamily: "var(--font-display)" }}>500+</div>
-                  <div className="text-sm mt-1" style={{ color: "#86efac" }}>Jamaah</div>
+                  <div className="text-sm mt-1" style={{ color: "#86efac" }}>{t(lang, "stat_jamaah")}</div>
                 </div>
                 <div className="col-span-2 bg-green-50 p-6 flex items-center gap-4 rounded-lg border border-green-100">
                   <MapPin className="w-8 h-8 flex-shrink-0" style={{ color: "#15803d" }} />
@@ -234,10 +277,15 @@ export default function Home() {
               {t(lang, "jadwal_title1")}{" "}
               <em className="not-italic" style={{ color: "#4ade80" }}>{t(lang, "jadwal_title2")}</em>
             </h2>
+            {prayerDate && (
+              <p className="text-green-400 text-sm mt-3">
+                📅 {prayerDate} · {t(lang, "jadwal_lokasi")}
+              </p>
+            )}
           </ScrollReveal>
-
+          
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mb-8">
-            {PRAYER_SCHEDULE.map((prayer, i) => (
+            {PRAYER_LIVE.map((prayer, i) => (
               <ScrollReveal key={prayer.key} delay={i * 0.08}>
                 <div className="prayer-card">
                   <div className="text-2xl mb-2">🕐</div>
@@ -245,35 +293,68 @@ export default function Home() {
                     {t(lang, prayer.key)}
                   </div>
                   <div className="text-white text-2xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
-                    {prayer.time_adzan}
+                    {prayerLoading ? (
+                      <span className="text-green-500 text-sm animate-pulse">...</span>
+                    ) : (
+                      prayerTimes[prayer.apiKey] ?? "--:--"
+                    )}
                   </div>
-                  <div className="text-green-400 text-xs mt-1">Iqomah: {prayer.time_iqomah}</div>
+                  {!prayerLoading && prayerTimes[prayer.apiKey] && (() => {
+                    const [h, m] = prayerTimes[prayer.apiKey].split(":").map(Number);
+                    const iqomahTotal = h * 60 + m + 5;
+                    const iqStr = `${String(Math.floor(iqomahTotal / 60)).padStart(2,"0")}:${String(iqomahTotal % 60).padStart(2,"0")}`;
+                    return <div className="text-green-400 text-xs mt-1">{t(lang, "jadwal_iqomah")}: {iqStr}</div>;
+                  })()}
                 </div>
               </ScrollReveal>
             ))}
           </div>
-
+          
           {/* Friday prayer special card */}
           <ScrollReveal>
-            <div className="rounded-xl p-6 flex flex-col sm:flex-row items-center gap-6 text-white"
-                 style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}>
-              <div className="text-4xl">🕌</div>
-              <div className="text-center sm:text-left">
-                <div className="text-green-300 text-xs font-semibold uppercase tracking-wider mb-1">
-                  {t(lang, "jadwal_jumat")}
+            {(() => {
+              const { adzan, mulai, selesai } = calcJumat(prayerTimes["Dhuhr"] ?? "");
+              return (
+                <div className="rounded-xl p-6 flex flex-col sm:flex-row items-center gap-6 text-white"
+                     style={{ background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)" }}>
+                  <div className="text-4xl">🕌</div>
+                  <div className="text-center sm:text-left">
+                    <div className="text-green-300 text-xs font-semibold uppercase tracking-wider mb-2">
+                      {t(lang, "jadwal_jumat")}
+                    </div>
+                    <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
+                      <div>
+                        <div className="text-green-400 text-xs mb-0.5">{t(lang, "jadwal_adzan")}</div>
+                        <div className="text-white text-xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
+                          {prayerLoading ? <span className="animate-pulse text-green-500">...</span> : adzan}
+                        </div>
+                      </div>
+                      <div className="text-green-700 text-lg">→</div>
+                      <div>
+                        <div className="text-green-400 text-xs mb-0.5">{t(lang, "jadwal_mulai")}</div>
+                        <div className="text-white text-xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
+                          {prayerLoading ? <span className="animate-pulse text-green-500">...</span> : mulai}
+                        </div>
+                      </div>
+                      <div className="text-green-700 text-lg">–</div>
+                      <div>
+                        <div className="text-green-400 text-xs mb-0.5">{t(lang, "jadwal_selesai")}</div>
+                        <div className="text-white text-xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
+                          {prayerLoading ? <span className="animate-pulse text-green-500">...</span> : selesai}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="text-green-300 text-sm mt-2">{t(lang, "jadwal_khatib")}</div>
+                  </div>
+                  <div className="sm:ml-auto flex items-center gap-2 text-green-300 text-sm">
+                    <Clock className="w-4 h-4" />
+                    <span>{t(lang, "jadwal_setiap_jumat")}</span>
+                  </div>
                 </div>
-                <div className="text-white text-2xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
-                  11:30 – 13:00
-                </div>
-                <div className="text-green-300 text-sm mt-1">Khatib & Imam bergantian setiap pekan</div>
-              </div>
-              <div className="sm:ml-auto flex items-center gap-2 text-green-300 text-sm">
-                <Clock className="w-4 h-4" />
-                <span>Setiap Jumat</span>
-              </div>
-            </div>
+              );
+            })()}
           </ScrollReveal>
-
+                
           <ScrollReveal>
             <p className="text-center text-green-400 text-sm mt-6">{t(lang, "jadwal_note")}</p>
           </ScrollReveal>
@@ -489,19 +570,19 @@ export default function Home() {
               <form className="space-y-5" onSubmit={(e) => e.preventDefault()}>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">{t(lang, "contact_name")}</label>
-                  <input type="text" className="form-input" placeholder="Ahmad Fauzi" />
+                  <input type="text" className="form-input" placeholder={t(lang, "contact_placeholder_name")} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">{t(lang, "contact_email")}</label>
-                  <input type="email" className="form-input" placeholder="ahmad@email.com" />
+                  <input type="email" className="form-input" placeholder={t(lang, "contact_placeholder_email")} />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">{t(lang, "contact_phone")}</label>
-                  <input type="tel" className="form-input" placeholder="+62 812-xxx-xxxx" />
+                  <input type="tel" className="form-input" placeholder="081 xxxx xxxx" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1.5">{t(lang, "contact_msg")}</label>
-                  <textarea className="form-input" rows={5} placeholder="Tulis pesan Anda..." />
+                  <textarea className="form-input" rows={5} placeholder={t(lang, "contact_placeholder_msg")} />
                 </div>
                 <button type="submit" className="btn-primary w-full justify-center text-base py-4">
                   {t(lang, "contact_send")} <ArrowRight className="w-4 h-4" />
