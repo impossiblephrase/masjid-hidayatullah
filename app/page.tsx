@@ -239,7 +239,7 @@ export default function Home() {
           </ScrollReveal>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PROGRAMS.map((prog, i) => (
+            {displayPrograms.map((prog: any, i) => (
               <ScrollReveal key={prog.slug} delay={i * 0.08}>
                 <div className="program-card">
                   <div className="program-icon">
