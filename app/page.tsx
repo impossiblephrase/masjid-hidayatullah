@@ -361,25 +361,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ══ STATS BAND ════════════════════════════════════════════════════════ */}
-      <section className="py-16 text-white overflow-hidden"
-               style={{ background: "linear-gradient(135deg, #14532d, #15803d, #16a34a)" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4">
-            {STATS.map((stat, i) => (
-              <ScrollReveal key={stat.key} delay={i * 0.1}
-                            className="stat-item px-4"
-                            style={{ borderRight: i < 3 ? "1px solid rgba(255,255,255,0.2)" : undefined }}>
-                <div className="stat-number">{stat.number}</div>
-                <div className="text-sm font-medium tracking-wide text-green-200">
-                  {t(lang, stat.key)}
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ══ PRAYER SCHEDULE ═══════════════════════════════════════════════════ */}
       <section id="jadwal" className="py-28 overflow-hidden"
                style={{ background: "linear-gradient(160deg, #052e16 0%, #166534 100%)" }}>
@@ -445,14 +426,14 @@ export default function Home() {
                           {prayerLoading ? <span className="animate-pulse text-green-500">...</span> : adzan}
                         </div>
                       </div>
-                      <div className="text-green-700 text-lg">→</div>
+                      <div className="text-green-600 text-lg">→</div>
                       <div>
                         <div className="text-green-400 text-xs mb-0.5">{t(lang, "jadwal_mulai")}</div>
                         <div className="text-white text-xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
                           {prayerLoading ? <span className="animate-pulse text-green-500">...</span> : mulai}
                         </div>
                       </div>
-                      <div className="text-green-700 text-lg">–</div>
+                      <div className="text-green-600 text-lg">–</div>
                       <div>
                         <div className="text-green-400 text-xs mb-0.5">{t(lang, "jadwal_selesai")}</div>
                         <div className="text-white text-xl font-bold" style={{ fontFamily: "var(--font-display)" }}>
