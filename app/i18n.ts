@@ -57,10 +57,6 @@ export const TRANSLATIONS = {
     about_location: "Jangnim, Busan. Korea Selatan",
 
     // Programs / Services
-    programs_eyebrow: "Kegiatan",
-    programs_title1:  "Program",
-    programs_title2:  "Masjid",
-    programs_desc:    "Berbagai kegiatan rutin, sosial dan pendidikan jamaah.",
 
     // Prayer Schedule
     jadwal_lokasi: "Busan, Korea Selatan",
@@ -179,7 +175,7 @@ export const TRANSLATIONS = {
     // Programs Page
     programs_title1:       "Program &",
     programs_title2:       "Kegiatan",
-    programs_desc:         "Berbagai program dan kegiatan rutin Masjid Hidayatullah untuk memenuhi kebutuhan spiritual dan sosial jamaah.",
+    programs_desc:         "Berbagai program dan kegiatan rutin Masjid Hidayatullah",
     programs_schedule:     "Jadwal",
     programs_learn_more:   "Pelajari Lebih Lanjut",
     programs_loading:      "Memuat program...",
