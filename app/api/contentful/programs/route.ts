@@ -8,7 +8,7 @@ export async function GET() {
 
   try {
     const res = await fetch(
-      `https://cdn.contentful.com/spaces/${SPACE}/environments/default/entries?content_type=program&order=fields.order&access_token=${TOKEN}`,
+      `https://cdn.contentful.com/spaces/${SPACE}/environments/master/entries?content_type=program&order=fields.order&access_token=${TOKEN}`,
       { next: { revalidate: 3600 } }
     );
     if (!res.ok) return NextResponse.json([]);
