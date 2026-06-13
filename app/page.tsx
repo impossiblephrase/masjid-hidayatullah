@@ -54,6 +54,8 @@ function calcJumat(dhuhrStr: string) {
 }
 
 export default function Home() {
+  const [cmsPrograms, setCmsPrograms] = useState<any[] | null>(null);
+  const displayPrograms: any[] = cmsPrograms ?? PROGRAMS;
   const router = useRouter();
   const { lang } = useLang();
   const year = new Date().getFullYear();
@@ -72,6 +74,15 @@ export default function Home() {
         setPrayerLoading(false);
       })
       .catch(() => setPrayerLoading(false));
+  }, []);
+
+  useEffect(() => {
+    fetch("/api/contentful/programs")
+      .then(r => r.json())
+      .then(data => {
+        if (data?.length > 0) setCmsPrograms(data);
+      })
+      .catch(() => {}); // fallback ke data statis
   }, []);
 
   const PRAYER_LIVE = [
@@ -235,10 +246,15 @@ export default function Home() {
                     {PROGRAM_ICONS[prog.icon] ?? <span className="text-2xl">🕌</span>}
                   </div>
                   <h3 className="font-semibold text-gray-900 text-lg mb-3">
-                    {prog.title[lang as keyof typeof prog.title]}
+                    {/* CMS: title string langsung, data.ts: title object {id, en} */}
+                    {typeof prog.title === "string"
+                      ? prog.title
+                      : prog.title[lang as keyof typeof prog.title]}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
-                    {prog.desc[lang as keyof typeof prog.desc]}
+                    {typeof prog.description === "string"
+                      ? prog.description
+                      : prog.desc?.[lang as keyof typeof prog.desc]}
                   </p>
                 </div>
               </ScrollReveal>
