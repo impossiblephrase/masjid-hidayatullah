@@ -252,8 +252,8 @@ export default function Home() {
                       : prog.title[lang as keyof typeof prog.title]}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
-                    {typeof prog.description === "string"
-                      ? prog.description
+                    {typeof prog.desc === "string"
+                      ? prog.desc
                       : prog.desc?.[lang as keyof typeof prog.desc]}
                   </p>
                 </div>
