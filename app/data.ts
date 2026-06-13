@@ -4,10 +4,10 @@
 export const MOSQUE = {
   NAME:      "Masjid Hidayatullah",
   LOCATION:  "Jangnim, Busan. Korea Selatan",
-  ADDRESS:   "328-16 Jangnim 1(il)-dong, Saha-gu, Busan, Korea Selatan",
-  PHONE:     "+62 812-3456-7890",
+  ADDRESS:   "328-16 Jangnim 1(il)-dong, Saha-gu, Busan, South Korea",
+  PHONE:     "+62 896-5465-9685",
   EMAIL:     "dkm.hidayatullah@gmail.com",
-  FOUNDED:   "2016",
+  FOUNDED:   "Tahun 2000",
   FACEBOOK:  "https://www.facebook.com/MasjidHidayatullah2016",
   INSTAGRAM: "https://www.instagram.com/dkm_hidayatullah/",
 };
@@ -15,7 +15,7 @@ export const MOSQUE = {
 export const STATS = [
   { number: "500+",  key: "stat_jamaah"  as const },
   { number: "12",    key: "stat_program" as const },
-  { number: "2016",  key: "stat_tahun"   as const },
+  { number: "2000",  key: "stat_tahun"   as const },
   { number: "8",     key: "stat_kajian"  as const },
 ];
 
@@ -209,5 +209,58 @@ export const PENGUMUMAN_LIST: Pengumuman[] = [
     id: "a2", tipe: "info", aktif: true, tanggal: "2026-06-10",
     judul: { id: "Stok Al-Qur'an Baru Tiba", en: "New Quran Stock Arrived", ko: "새 꾸란 재입고" },
     isi: { id: "Al-Qur'an edisi terbaru dengan terjemahan dan tafsir ringkas sudah tersedia di toko.", en: "New edition Quran with translation and concise tafsir is now available at the store.", ko: "번역 및 간략한 타프시르가 포함된 최신 판 꾸란이 입고되었습니다." },
+  },
+];
+
+// ─── Pengumuman Masjid (fallback) ────────────────────────────────────────────
+export type PengumumanMasjid = {
+  id: string;
+  judul: { id: string; en: string; ko: string };
+  isi: { id: string; en: string; ko: string };
+  tanggal: string;
+  kategori: "kajian" | "sosial" | "kegiatan" | "umum";
+  pinned: boolean;
+  aktif: boolean;
+};
+
+export const PENGUMUMAN_MASJID: PengumumanMasjid[] = [
+  {
+    id: "m1", kategori: "kajian", pinned: true, aktif: true, tanggal: "2026-06-13",
+    judul: {
+      id: "Kajian Ahad Pagi",
+      en: "Sunday Morning Study Circle",
+      ko: "일요일 아침 학습 모임",
+    },
+    isi: {
+      id: "Kajian rutin setiap Ahad pagi pukul 08.00 WIB bersama Ustadz Ahmad. Tema: Fiqih Muamalah.",
+      en: "Regular Sunday morning study circle at 08:00 with Ustadz Ahmad. Topic: Fiqh of Transactions.",
+      ko: "매주 일요일 오전 8시 우스타즈 아흐마드와 함께하는 정기 학습 모임. 주제: 무아말라 피크.",
+    },
+  },
+  {
+    id: "m2", kategori: "kegiatan", pinned: false, aktif: true, tanggal: "2026-06-20",
+    judul: {
+      id: "Bakti Sosial Ramadan",
+      en: "Ramadan Social Charity",
+      ko: "라마단 사회 봉사",
+    },
+    isi: {
+      id: "Kegiatan bakti sosial pembagian sembako untuk warga kurang mampu di sekitar masjid. Daftar sebagai relawan!",
+      en: "Social charity event distributing basic necessities to underprivileged residents near the mosque. Register as a volunteer!",
+      ko: "모스크 주변 저소득층 주민들에게 생필품을 배분하는 사회 봉사 행사. 자원봉사자로 등록하세요!",
+    },
+  },
+  {
+    id: "m3", kategori: "umum", pinned: false, aktif: true, tanggal: "2026-06-15",
+    judul: {
+      id: "Renovasi Tempat Wudhu",
+      en: "Ablution Area Renovation",
+      ko: "우두 공간 리모델링",
+    },
+    isi: {
+      id: "Tempat wudhu putra sedang direnovasi mulai 15–22 Juni. Jamaah mohon menggunakan tempat wudhu alternatif.",
+      en: "The men's ablution area is under renovation from June 15–22. Congregation please use the alternative ablution area.",
+      ko: "남성 우두 공간이 6월 15~22일 리모델링 중입니다. 신도들은 대체 우두 공간을 이용해 주세요.",
+    },
   },
 ];

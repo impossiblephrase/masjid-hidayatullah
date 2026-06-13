@@ -104,3 +104,21 @@ export async function getContentfulPengumuman(): Promise<any[] | null> {
     aktif: item.fields.aktif ?? true,
   }));
 }
+
+// ─── Pengumuman Masjid (beranda) ─────────────────────────────────────────────
+// Content Type: pengumumanMasjid
+// Fields: judul (Symbol, localized), isi (Text, localized), tanggal (Date),
+//         kategori (Symbol), aktif (Boolean), pinned (Boolean)
+export async function getContentfulPengumumanMasjid(): Promise<any[] | null> {
+  const data = await cfetch<any>("pengumumanMasjid", "&order=-fields.pinned,-fields.tanggal&fields.aktif=true");
+  if (!data?.items) return null;
+  return data.items.map((item: any) => ({
+    id: item.sys.id,
+    judul: item.fields.judul,
+    isi: item.fields.isi,
+    tanggal: item.fields.tanggal,
+    kategori: item.fields.kategori ?? "umum",
+    pinned: item.fields.pinned ?? false,
+    aktif: item.fields.aktif ?? true,
+  }));
+}

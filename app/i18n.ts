@@ -27,6 +27,19 @@ export const TRANSLATIONS = {
     stat_tahun:     "Tahun Berdiri",
     stat_kajian:    "Kajian / Bulan",
 
+    // Pengumuman Masjid
+    pengumuman_eyebrow:    "Pengumuman",
+    pengumuman_title1:     "Info &",
+    pengumuman_title2:     "Pengumuman",
+    pengumuman_desc:       "Informasi terkini seputar kegiatan dan program Masjid Hidayatullah.",
+    pengumuman_kat_kajian:  "Kajian",
+    pengumuman_kat_sosial:  "Sosial",
+    pengumuman_kat_kegiatan:"Kegiatan",
+    pengumuman_kat_umum:    "Umum",
+    pengumuman_pinned:      "Penting",
+    pengumuman_selengkapnya:"Selengkapnya",
+    pengumuman_notif_close: "Tutup",
+
     // About
     about_eyebrow:  "Tentang Kami",
     about_quote: "Masjid yang makmur, umat yang berdaya.",
@@ -158,6 +171,18 @@ export const TRANSLATIONS = {
     stat_tahun:     "Years Standing",
     stat_kajian:    "Study Circles / Month",
 
+    pengumuman_eyebrow:    "Announcements",
+    pengumuman_title1:     "News &",
+    pengumuman_title2:     "Announcements",
+    pengumuman_desc:       "Latest information about Masjid Hidayatullah activities and programs.",
+    pengumuman_kat_kajian:  "Study Circle",
+    pengumuman_kat_sosial:  "Social",
+    pengumuman_kat_kegiatan:"Events",
+    pengumuman_kat_umum:    "General",
+    pengumuman_pinned:      "Important",
+    pengumuman_selengkapnya:"Read More",
+    pengumuman_notif_close: "Close",
+
     about_eyebrow:  "About Us",
     about_quote: "A prosperous mosque, an empowered community.",
     about_title1:   "House of Worship,",
@@ -274,6 +299,18 @@ export const TRANSLATIONS = {
     hero_desc:      "더 나은 삶을 향해 공동체를 힘있게 하는 예배, 교육, 사회 활동의 중심지입니다.",
     hero_cta1:      "예배 일정",
     hero_cta2:      "문의하기",
+
+    pengumuman_eyebrow:    "공지사항",
+    pengumuman_title1:     "소식 &",
+    pengumuman_title2:     "공지사항",
+    pengumuman_desc:       "히다야툴라 모스크 활동 및 프로그램에 관한 최신 정보.",
+    pengumuman_kat_kajian:  "학습 모임",
+    pengumuman_kat_sosial:  "사회",
+    pengumuman_kat_kegiatan:"행사",
+    pengumuman_kat_umum:    "일반",
+    pengumuman_pinned:      "중요",
+    pengumuman_selengkapnya:"자세히 보기",
+    pengumuman_notif_close: "닫기",
 
     stat_jamaah:    "활동 신도",
     stat_program:   "정기 프로그램",

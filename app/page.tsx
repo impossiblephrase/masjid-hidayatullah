@@ -25,6 +25,7 @@ import ScrollReveal from "../components/ScrollReveal";
 import { useLang } from "../components/LangContext";
 import { t } from "./i18n";
 import { MOSQUE, STATS, PROGRAMS, PRAYER_SCHEDULE, KOPERASI_PRODUCTS, KOPERASI_BENEFITS, GALLERY_ITEMS } from "./data";
+import { PENGUMUMAN_MASJID, type PengumumanMasjid } from "./data";
 
 const PROGRAM_ICONS: Record<string, React.ReactNode> = {
   mosque:  <span className="text-2xl">🕌</span>,
@@ -59,6 +60,8 @@ export default function Home() {
   const router = useRouter();
   const { lang } = useLang();
   const year = new Date().getFullYear();
+  const [notifDismissed, setNotifDismissed] = useState(false);
+  const notifPinned = PENGUMUMAN_MASJID.find(p => p.pinned && p.aktif);
 
   // ── Aladhan API ──────────────────────────────────────────────
   const [prayerTimes, setPrayerTimes] = useState<Record<string, string>>({});
@@ -152,10 +155,35 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-green-400 text-xs tracking-widest uppercase">
+        <div className="absolute bottom-15 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-green-400 text-xs tracking-widest uppercase">
           <span>Scroll</span>
           <div className="w-px h-8 animate-pulse" style={{ background: "linear-gradient(to bottom, #4ade80, transparent)" }} />
         </div>
+
+        {/* Notifikasi pinned */}
+        {notifPinned && !notifDismissed && (
+          <div className="absolute bottom-0 left-0 right-0 z-10"
+               style={{ background: "rgba(5,46,22,0.85)", backdropFilter: "blur(8px)",
+                        borderTop: "1px solid rgba(74,222,128,0.3)" }}>
+            <div className="max-w-7xl mx-auto px-6 py-3 flex items-center gap-4">
+              <span className="text-xs font-bold px-2 py-0.5 rounded flex-shrink-0"
+                    style={{ background: "#4ade80", color: "#052e16" }}>
+                {t(lang, "pengumuman_pinned")}
+              </span>
+              <p className="text-green-100 text-sm flex-1 truncate">
+                {notifPinned.judul[lang as keyof typeof notifPinned.judul]}
+                {" — "}
+                <span className="text-green-300">
+                  {notifPinned.isi[lang as keyof typeof notifPinned.isi]}
+                </span>
+              </p>
+              <button onClick={() => setNotifDismissed(true)}
+                      className="text-green-400 hover:text-white text-xs flex-shrink-0 transition-colors px-2 py-1 rounded hover:bg-white/10">
+                {t(lang, "pengumuman_notif_close")} ✕
+              </button>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* ══ ABOUT ═════════════════════════════════════════════════════════════ */}
@@ -223,6 +251,76 @@ export default function Home() {
 
           </div>
         </div>
+
+        {/* ══ PENGUMUMAN MASJID ════════════════════════════════════════════════ */}
+        <section id="pengumuman" className="py-20 bg-white overflow-hidden">
+          <div className="max-w-7xl mx-auto px-6 lg:px-12">
+            <ScrollReveal className="mb-12">
+              <span className="section-eyebrow">{t(lang, "pengumuman_eyebrow")}</span>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <h2 className="text-4xl md:text-5xl text-gray-900 leading-tight"
+                    style={{ fontFamily: "var(--font-display)" }}>
+                  {t(lang, "pengumuman_title1")}{" "}
+                  <em className="not-italic" style={{ color: "#15803d" }}>{t(lang, "pengumuman_title2")}</em>
+                </h2>
+                <p className="text-gray-500 max-w-sm">{t(lang, "pengumuman_desc")}</p>
+              </div>
+            </ScrollReveal>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {PENGUMUMAN_MASJID.filter(p => p.aktif).map((item, i) => {
+                const KAT_STYLE: Record<string, { bg: string; text: string; icon: string }> = {
+                  kajian:   { bg: "#dbeafe", text: "#1e40af", icon: "📖" },
+                  sosial:   { bg: "#fce7f3", text: "#9d174d", icon: "❤️" },
+                  kegiatan: { bg: "#fef9c3", text: "#a16207", icon: "📅" },
+                  umum:     { bg: "#f3f4f6", text: "#374151", icon: "📢" },
+                };
+                const style = KAT_STYLE[item.kategori] ?? KAT_STYLE.umum;
+                const katKey = `pengumuman_kat_${item.kategori}` as any;
+              
+                return (
+                  <ScrollReveal key={item.id} delay={i * 0.08}>
+                    <div className="bg-white rounded-xl border border-gray-100 shadow-sm hover:shadow-md transition-all p-6 flex flex-col h-full"
+                         style={{ borderTop: item.pinned ? "3px solid #15803d" : undefined }}>
+                      {/* Header */}
+                      <div className="flex items-center justify-between mb-4">
+                        <span className="text-xs font-semibold px-2.5 py-1 rounded-full flex items-center gap-1"
+                              style={{ background: style.bg, color: style.text }}>
+                          {style.icon} {t(lang, katKey)}
+                        </span>
+                        {item.pinned && (
+                          <span className="text-xs font-bold px-2 py-0.5 rounded"
+                                style={{ background: "#f0fdf4", color: "#15803d" }}>
+                            📌 {t(lang, "pengumuman_pinned")}
+                          </span>
+                        )}
+                      </div>
+                      
+                      {/* Content */}
+                      <h3 className="font-semibold text-gray-900 mb-2 leading-snug">
+                        {item.judul[lang as keyof typeof item.judul]}
+                      </h3>
+                      <p className="text-gray-500 text-sm leading-relaxed flex-1">
+                        {item.isi[lang as keyof typeof item.isi]}
+                      </p>
+                      
+                      {/* Footer */}
+                      <div className="mt-4 pt-4 flex items-center justify-between"
+                           style={{ borderTop: "1px solid #f3f4f6" }}>
+                        <span className="text-gray-400 text-xs">📅 {item.tanggal}</span>
+                        <a href="#contact"
+                           className="text-xs font-semibold flex items-center gap-1 transition-colors"
+                           style={{ color: "#15803d" }}>
+                          {t(lang, "pengumuman_selengkapnya")} →
+                        </a>
+                      </div>
+                    </div>
+                  </ScrollReveal>
+                );
+              })}
+            </div>
+          </div>
+        </section>
       </section>
 
       {/* ══ PROGRAMS ══════════════════════════════════════════════════════════ */}
