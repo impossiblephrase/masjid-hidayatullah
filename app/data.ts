@@ -63,10 +63,10 @@ export const PROGRAMS = [
   },
   {
     icon: "store",
-    title:    { id: "Koperasi Masjid",           en: "Mosque Cooperative",          ko: "마스지드 협동조합" },
+    title:    { id: "Koperasi Masjid",           en: "Mosque Cooperative",          ko: "모스크 협동조합" },
     desc:     { id: "Toko dan koperasi yang melayani kebutuhan jamaah sekaligus mendukung operasional masjid.",
                 en: "Store and cooperative serving congregation needs while supporting mosque operations.",
-                ko: "신도들의 필요를 충족하고 마스지드 운영을 지원하는 상점 및 협동조합." },
+                ko: "신도들의 필요를 충족하고 모스크 운영을 지원하는 상점 및 협동조합." },
     slug: "koperasi",
   },
 ];
@@ -99,9 +99,9 @@ export const KOPERASI_PRODUCTS = [
 export const KOPERASI_BENEFITS = [
   { id: "b1", text: { id: "Dividen tahunan dari keuntungan koperasi",     en: "Annual dividends from cooperative profits",       ko: "협동조합 이익으로부터 연간 배당" } },
   { id: "b2", text: { id: "Layanan simpan pinjam tanpa riba",             en: "Interest-free savings and loan services",         ko: "무이자 저축 및 대출 서비스" } },
-  { id: "b3", text: { id: "Diskon pembelian produk di toko masjid",       en: "Purchase discounts at the mosque store",          ko: "마스지드 상점에서 구매 할인" } },
+  { id: "b3", text: { id: "Diskon pembelian produk di toko masjid",       en: "Purchase discounts at the mosque store",          ko: "모스크 상점에서 구매 할인" } },
   { id: "b4", text: { id: "Ikut berpartisipasi dalam RAT (Rapat Anggota)", en: "Participate in the Annual Members Meeting (RAT)", ko: "연간 회원 회의(RAT) 참여" } },
-  { id: "b5", text: { id: "Mendukung operasional dan program masjid",     en: "Support mosque operations and programs",          ko: "마스지드 운영 및 프로그램 지원" } },
+  { id: "b5", text: { id: "Mendukung operasional dan program masjid",     en: "Support mosque operations and programs",          ko: "모스크 운영 및 프로그램 지원" } },
 ];
 
 // ─── Gallery Items ────────────────────────────────────────────────────────────
@@ -111,6 +111,6 @@ export const GALLERY_ITEMS = [
   { id: "g2", label: { id: "Kajian Rutin",         en: "Regular Study Circle", ko: "정기 학습 모임" }, color: "#166534" },
   { id: "g3", label: { id: "Kegiatan TPA",         en: "TPA Activities",       ko: "TPA 활동" },   color: "#15803d" },
   { id: "g4", label: { id: "Bakti Sosial",         en: "Social Charity",       ko: "사회 자선" },   color: "#16a34a" },
-  { id: "g5", label: { id: "Koperasi Masjid",      en: "Mosque Cooperative",   ko: "마스지드 협동조합" }, color: "#22c55e" },
+  { id: "g5", label: { id: "Koperasi Masjid",      en: "Mosque Cooperative",   ko: "모스크 협동조합" }, color: "#22c55e" },
   { id: "g6", label: { id: "Peringatan Hari Besar", en: "Islamic Celebrations", ko: "이슬람 기념행사" }, color: "#4ade80" },
 ];
