@@ -24,7 +24,7 @@ export const PROGRAMS = [
   {
     icon: "mosque",
     title:    { id: "Sholat Berjamaah",         en: "Congregational Prayer",       ko: "집단 예배" },
-    desc:     { id: "Lima waktu sholat berjamaah setiap hari, dilengkapi dengan dzikir dan doa bersama.",
+    description:     { id: "Lima waktu sholat berjamaah setiap hari, dilengkapi dengan dzikir dan doa bersama.",
                 en: "Five daily congregational prayers with collective dhikr and supplication.",
                 ko: "매일 5번의 집단 예배, 공동 디크르 및 기도 포함." },
     slug: "sholat",
@@ -32,7 +32,7 @@ export const PROGRAMS = [
   {
     icon: "book",
     title:    { id: "Kajian & Pengajian",        en: "Islamic Study Circles",       ko: "이슬람 학습 모임" },
-    desc:     { id: "Kajian rutin mingguan dan bulanan dengan ustadz berpengalaman membahas fiqih, tafsir, dan akhlak.",
+    description:     { id: "Kajian rutin mingguan dan bulanan dengan ustadz berpengalaman membahas fiqih, tafsir, dan akhlak.",
                 en: "Weekly and monthly study circles with experienced scholars covering fiqh, tafsir, and ethics.",
                 ko: "경험 있는 학자들과 함께하는 주간 및 월간 학습 모임." },
     slug: "kajian",
@@ -40,7 +40,7 @@ export const PROGRAMS = [
   {
     icon: "school",
     title:    { id: "TPA / Pendidikan Al-Qur'an", en: "Quran Education (TPA)",      ko: "꾸란 교육" },
-    desc:     { id: "Taman Pendidikan Al-Qur'an untuk anak-anak dengan metode iqro dan tahsin.",
+    description:     { id: "Taman Pendidikan Al-Qur'an untuk anak-anak dengan metode iqro dan tahsin.",
                 en: "Quran education center for children using the iqro and tahsin method.",
                 ko: "이크로 및 타흐신 방법을 사용한 어린이 꾸란 교육 센터." },
     slug: "tpa",
@@ -48,7 +48,7 @@ export const PROGRAMS = [
   {
     icon: "heart",
     title:    { id: "Sosial & Zakat",            en: "Social & Zakat Programs",     ko: "사회 & 자카트 프로그램" },
-    desc:     { id: "Pengelolaan zakat, infaq, sedekah, dan program sosial untuk membantu masyarakat yang membutuhkan.",
+    description:     { id: "Pengelolaan zakat, infaq, sedekah, dan program sosial untuk membantu masyarakat yang membutuhkan.",
                 en: "Management of zakat, infaq, charity, and social programs to help those in need.",
                 ko: "자카트, 인파크, 자선 및 사회 프로그램 관리." },
     slug: "sosial",
@@ -56,7 +56,7 @@ export const PROGRAMS = [
   {
     icon: "youth",
     title:    { id: "Remaja Masjid",             en: "Youth Organization",          ko: "청소년 조직" },
-    desc:     { id: "Organisasi kepemudaan yang aktif dalam kegiatan dakwah, olahraga, dan pengembangan diri.",
+    description:     { id: "Organisasi kepemudaan yang aktif dalam kegiatan dakwah, olahraga, dan pengembangan diri.",
                 en: "Active youth organization in da'wah, sports, and self-development activities.",
                 ko: "다와, 스포츠, 자기 개발 활동에 적극적인 청소년 조직." },
     slug: "remaja",
@@ -64,7 +64,7 @@ export const PROGRAMS = [
   {
     icon: "store",
     title:    { id: "Koperasi Masjid",           en: "Mosque Cooperative",          ko: "모스크 협동조합" },
-    desc:     { id: "Toko dan koperasi yang melayani kebutuhan jamaah sekaligus mendukung operasional masjid.",
+    description:     { id: "Toko dan koperasi yang melayani kebutuhan jamaah sekaligus mendukung operasional masjid.",
                 en: "Store and cooperative serving congregation needs while supporting mosque operations.",
                 ko: "신도들의 필요를 충족하고 모스크 운영을 지원하는 상점 및 협동조합." },
     slug: "koperasi",
