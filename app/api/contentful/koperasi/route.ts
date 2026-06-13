@@ -19,7 +19,7 @@ export async function GET() {
   try {
     const res = await fetch(
       `${BASE}/entries?content_type=koperasi_product&order=fields.kategori&access_token=${TOKEN}`,
-      { next: { revalidate: 3600 } }
+      { next: { revalidate: 60 } }
     );
 
     if (!res.ok) {

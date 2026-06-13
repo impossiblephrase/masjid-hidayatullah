@@ -27,7 +27,7 @@ export default function KoperasiPage() {
       try {
         const [prodRes, pengRes] = await Promise.all([
           fetch("/api/contentful/koperasi"),
-          fetch("/api/contentful/pengumuman")
+          fetch("/api/contentful/pengumuman-koperasi")
         ]);
         
         if (prodRes.ok) {
@@ -49,9 +49,10 @@ export default function KoperasiPage() {
     fetchData();
   }, []);
 
-  // Gunakan data dari Contentful jika tersedia, fallback ke data statis
-  const displayProduk = produkCMS ?? PRODUK_LIST;
-  const displayPengumuman = pengumumanCMS ?? PENGUMUMAN_LIST;
+  // Gunakan data dari Contentful jika ada isinya, jika kosong fallback ke data statis
+  const displayProduk = produkCMS && produkCMS.length > 0 ? produkCMS : PRODUK_LIST;
+  const displayPengumuman =
+    pengumumanCMS && pengumumanCMS.length > 0 ? pengumumanCMS : PENGUMUMAN_LIST;
 
   const produkFiltered = useMemo(() => {
     return displayProduk.filter(p => {
