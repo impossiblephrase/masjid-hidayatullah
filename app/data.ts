@@ -114,3 +114,100 @@ export const GALLERY_ITEMS = [
   { id: "g5", label: { id: "Koperasi Masjid",      en: "Mosque Cooperative",   ko: "모스크 협동조합" }, color: "#22c55e" },
   { id: "g6", label: { id: "Peringatan Hari Besar", en: "Islamic Celebrations", ko: "이슬람 기념행사" }, color: "#4ade80" },
 ];
+
+// ─── Koperasi Page Data (fallback jika Contentful tidak terhubung) ──────────
+export type KategoriKey = "semua" | "pokok" | "ibadah" | "pakaian" | "makanan" | "layanan";
+
+export const KATEGORI_LIST: { key: KategoriKey; label: { id: string; en: string; ko: string } }[] = [
+  { key: "semua",   label: { id: "Semua",           en: "All",            ko: "전체" } },
+  { key: "pokok",   label: { id: "Kebutuhan Pokok", en: "Basic Needs",    ko: "기본 필수품" } },
+  { key: "ibadah",  label: { id: "Perlengkapan Ibadah", en: "Worship Supplies", ko: "예배 용품" } },
+  { key: "pakaian", label: { id: "Pakaian Muslim",  en: "Muslim Clothing", ko: "무슬림 의류" } },
+  { key: "makanan", label: { id: "Makanan & Minuman", en: "Food & Drinks", ko: "식음료" } },
+  { key: "layanan", label: { id: "Layanan",         en: "Services",       ko: "서비스" } },
+];
+
+export type Produk = {
+  id: string;
+  nama: { id: string; en: string; ko: string };
+  deskripsi: { id: string; en: string; ko: string };
+  harga: string | null; // null = hubungi untuk harga
+  kategori: KategoriKey;
+  emoji: string;
+  tersedia: boolean;
+};
+
+export const PRODUK_LIST: Produk[] = [
+  {
+    id: "p1", emoji: "🌾", kategori: "pokok", tersedia: true, harga: "Rp 13.000/kg",
+    nama: { id: "Beras Premium", en: "Premium Rice", ko: "프리미엄 쌀" },
+    deskripsi: { id: "Beras pulen kualitas premium, cocok untuk keluarga.", en: "Premium quality soft rice, perfect for the family.", ko: "가족을 위한 프리미엄 품질의 부드러운 쌀." },
+  },
+  {
+    id: "p2", emoji: "🫒", kategori: "pokok", tersedia: true, harga: "Rp 18.000/ltr",
+    nama: { id: "Minyak Goreng Halal", en: "Halal Cooking Oil", ko: "할랄 식용유" },
+    deskripsi: { id: "Minyak goreng bersertifikat halal MUI.", en: "MUI halal-certified cooking oil.", ko: "MUI 할랄 인증 식용유." },
+  },
+  {
+    id: "p3", emoji: "📿", kategori: "ibadah", tersedia: true, harga: "Rp 25.000",
+    nama: { id: "Tasbih Kayu", en: "Wooden Tasbih", ko: "나무 타스비흐" },
+    deskripsi: { id: "Tasbih kayu berkualitas untuk dzikir sehari-hari.", en: "Quality wooden tasbih for daily dhikr.", ko: "매일 디크르를 위한 품질 좋은 나무 타스비흐." },
+  },
+  {
+    id: "p4", emoji: "🕌", kategori: "ibadah", tersedia: true, harga: "Rp 75.000",
+    nama: { id: "Sajadah Premium", en: "Premium Prayer Rug", ko: "프리미엄 기도 매트" },
+    deskripsi: { id: "Sajadah tebal dan lembut dengan motif islami.", en: "Thick and soft prayer rug with Islamic motif.", ko: "이슬람 문양의 두껍고 부드러운 기도 매트." },
+  },
+  {
+    id: "p5", emoji: "📖", kategori: "ibadah", tersedia: true, harga: "Rp 85.000",
+    nama: { id: "Al-Qur'an Terjemahan", en: "Quran with Translation", ko: "번역본 꾸란" },
+    deskripsi: { id: "Al-Qur'an dengan terjemahan Bahasa Indonesia.", en: "Quran with Indonesian language translation.", ko: "인도네시아어 번역본 꾸란." },
+  },
+  {
+    id: "p6", emoji: "👔", kategori: "pakaian", tersedia: true, harga: "Rp 120.000",
+    nama: { id: "Baju Koko Pria", en: "Men's Koko Shirt", ko: "남성 코코 셔츠" },
+    deskripsi: { id: "Baju koko bahan katun premium, tersedia berbagai ukuran.", en: "Premium cotton koko shirt, available in various sizes.", ko: "다양한 사이즈의 프리미엄 면 코코 셔츠." },
+  },
+  {
+    id: "p7", emoji: "🧕", kategori: "pakaian", tersedia: true, harga: "Rp 95.000",
+    nama: { id: "Mukena Putih", en: "White Mukena", ko: "흰색 무케나" },
+    deskripsi: { id: "Mukena bahan katun putih halus untuk sholat wanita.", en: "Fine white cotton mukena for women's prayer.", ko: "여성 예배용 부드러운 흰색 면 무케나." },
+  },
+  {
+    id: "p8", emoji: "🍱", kategori: "makanan", tersedia: true, harga: "Rp 8.000",
+    nama: { id: "Kurma Ajwa", en: "Ajwa Dates", ko: "아즈와 대추야자" },
+    deskripsi: { id: "Kurma Ajwa premium impor dari Madinah, per 100gr.", en: "Premium Ajwa dates imported from Madinah, per 100gr.", ko: "마디나에서 수입한 프리미엄 아즈와 대추야자, 100gr 단위." },
+  },
+  {
+    id: "p9", emoji: "💰", kategori: "layanan", tersedia: true, harga: null,
+    nama: { id: "Simpan Pinjam", en: "Savings & Loans", ko: "저축 및 대출" },
+    deskripsi: { id: "Layanan simpan pinjam bebas riba khusus anggota koperasi.", en: "Interest-free savings and loan service for cooperative members.", ko: "협동조합 회원 전용 무이자 저축 및 대출 서비스." },
+  },
+  {
+    id: "p10", emoji: "📱", kategori: "layanan", tersedia: true, harga: null,
+    nama: { id: "Pembayaran Tagihan", en: "Bill Payments", ko: "청구서 결제" },
+    deskripsi: { id: "Bayar listrik, air, BPJS, pulsa, dan tagihan lainnya.", en: "Pay electricity, water, BPJS, phone credit, and other bills.", ko: "전기, 수도, BPJS, 통신비 등 각종 청구서 결제." },
+  },
+];
+
+export type Pengumuman = {
+  id: string;
+  judul: { id: string; en: string; ko: string };
+  isi: { id: string; en: string; ko: string };
+  tanggal: string;
+  tipe: "promo" | "info" | "penting";
+  aktif: boolean;
+};
+
+export const PENGUMUMAN_LIST: Pengumuman[] = [
+  {
+    id: "a1", tipe: "promo", aktif: true, tanggal: "2026-06-01",
+    judul: { id: "Diskon Ramadan 10%", en: "Ramadan 10% Discount", ko: "라마단 10% 할인" },
+    isi: { id: "Dapatkan diskon 10% untuk semua produk perlengkapan ibadah selama bulan Ramadan.", en: "Get 10% discount on all worship supplies during Ramadan.", ko: "라마단 기간 동안 모든 예배 용품 10% 할인." },
+  },
+  {
+    id: "a2", tipe: "info", aktif: true, tanggal: "2026-06-10",
+    judul: { id: "Stok Al-Qur'an Baru Tiba", en: "New Quran Stock Arrived", ko: "새 꾸란 재입고" },
+    isi: { id: "Al-Qur'an edisi terbaru dengan terjemahan dan tafsir ringkas sudah tersedia di toko.", en: "New edition Quran with translation and concise tafsir is now available at the store.", ko: "번역 및 간략한 타프시르가 포함된 최신 판 꾸란이 입고되었습니다." },
+  },
+];

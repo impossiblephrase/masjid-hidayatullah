@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import {
   ArrowRight, Phone, MapPin, Mail, Clock,
   BookOpen, Heart, Users, ShoppingBag, Star, CheckCircle,
@@ -53,6 +54,7 @@ function calcJumat(dhuhrStr: string) {
 }
 
 export default function Home() {
+  const router = useRouter();
   const { lang } = useLang();
   const year = new Date().getFullYear();
 
@@ -391,7 +393,17 @@ export default function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {KOPERASI_PRODUCTS.map((prod, i) => (
                   <ScrollReveal key={prod.id} delay={i * 0.06}>
-                    <div className="kop-card">
+                    <div
+                      className="
+                        kop-card
+                        cursor-pointer
+                        transition-all
+                        duration-300
+                        hover:scale-105
+                        hover:shadow-lg
+                      "
+                      onClick={() => router.push("/koperasi")}
+                    >
                       <div className="text-3xl mb-3">{prod.icon}</div>
                       <h4 className="font-semibold text-gray-900 mb-1">
                         {prod.name[lang as keyof typeof prod.name]}

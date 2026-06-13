@@ -64,3 +64,43 @@ export async function getContentfulGallery(): Promise<any[] | null> {
     category: item.fields.category,
   }));
 }
+
+// ─── Koperasi Products from Contentful ───────────────────────────────────────
+// Content Type: koperasi_product
+// Fields: nama (Symbol), deskripsi (Text), harga (Symbol, optional),
+//         kategori (Symbol), emoji (Symbol), tersedia (Boolean), gambar (Asset)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function getContentfulProduk(): Promise<any[] | null> {
+  const data = await cfetch<any>("koperasi_product", "&order=fields.kategori");
+  if (!data?.items) return null;
+  return data.items.map((item: any) => ({
+    id: item.sys.id,
+    nama: item.fields.nama,
+    deskripsi: item.fields.deskripsi,
+    harga: item.fields.harga ?? null,
+    kategori: item.fields.kategori,
+    emoji: item.fields.emoji ?? "🛒",
+    tersedia: item.fields.tersedia ?? true,
+    gambarUrl: item.fields.gambar
+      ? `https:${data.includes?.Asset?.find((a: any) => a.sys.id === item.fields.gambar.sys.id)?.fields?.file?.url}`
+      : null,
+  }));
+}
+
+// ─── Announcements from Contentful ───────────────────────────────────────────
+// Content Type: pengumuman
+// Fields: judul (Symbol), isi (Text), tanggal (Date),
+//         tipe (Symbol: "promo"|"info"|"penting"), aktif (Boolean)
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function getContentfulPengumuman(): Promise<any[] | null> {
+  const data = await cfetch<any>("pengumuman", "&order=-fields.tanggal&fields.aktif=true");
+  if (!data?.items) return null;
+  return data.items.map((item: any) => ({
+    id: item.sys.id,
+    judul: item.fields.judul,
+    isi: item.fields.isi,
+    tanggal: item.fields.tanggal,
+    tipe: item.fields.tipe ?? "info",
+    aktif: item.fields.aktif ?? true,
+  }));
+}

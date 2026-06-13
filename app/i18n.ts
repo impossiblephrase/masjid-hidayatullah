@@ -115,6 +115,25 @@ export const TRANSLATIONS = {
     cta_desc:     "Jadilah bagian dari jamaah Masjid Hidayatullah. Bersama kita wujudkan masjid yang makmur dan berdampak bagi umat.",
     cta_btn1:     "Hubungi Kami",
     cta_btn2:     "Donasi Sekarang",
+
+     // Koperasi Page
+     kop_page_title:       "Toko & Koperasi Masjid Hidayatullah",
+     kop_page_desc:        "Belanja kebutuhan islami dan dukung perekonomian jamaah melalui koperasi masjid.",
+     kop_back:             "← Kembali ke Beranda",
+     kop_promo_title:      "Pengumuman & Promo",
+     kop_promo_empty:      "Belum ada pengumuman saat ini.",
+     kop_filter_all:       "Semua",
+     kop_search:           "Cari produk...",
+     kop_empty:            "Tidak ada produk ditemukan.",
+     kop_price:            "Harga",
+     kop_hubungi_beli:     "Hubungi untuk Beli",
+     kop_stok_habis:       "Stok Habis",
+     kop_tersedia:         "Tersedia",
+     kop_lihat_semua:      "Lihat Semua Produk",
+     kop_section_title1:   "Toko &",
+     kop_section_title2:   "Koperasi",
+     kop_section_desc:     "Produk halal pilihan untuk kebutuhan ibadah dan sehari-hari jamaah.",
+     kop_section_cta:      "Lihat Semua Produk →",
   },
 
   en: {
@@ -218,6 +237,25 @@ export const TRANSLATIONS = {
     cta_desc:     "Be part of the Masjid Hidayatullah congregation. Together we build a prosperous mosque that benefits the community.",
     cta_btn1:     "Contact Us",
     cta_btn2:     "Donate Now",
+
+     // Koperasi Page
+     kop_page_title:       "Masjid Hidayatullah Store & Cooperative",
+     kop_page_desc:        "Shop for Islamic needs and support the congregation's economy through the mosque cooperative.",
+     kop_back:             "← Back to Home",
+     kop_promo_title:      "Announcements & Promotions",
+     kop_promo_empty:      "No announcements at this time.",
+     kop_filter_all:       "All",
+     kop_search:           "Search products...",
+     kop_empty:            "No products found.",
+     kop_price:            "Price",
+     kop_hubungi_beli:     "Contact to Purchase",
+     kop_stok_habis:       "Out of Stock",
+     kop_tersedia:         "Available",
+     kop_lihat_semua:      "View All Products",
+     kop_section_title1:   "Store &",
+     kop_section_title2:   "Cooperative",
+     kop_section_desc:     "Halal products for worship and daily needs of the congregation.",
+     kop_section_cta:      "View All Products →",
   },
 
   ko: {
@@ -321,6 +359,25 @@ export const TRANSLATIONS = {
     cta_desc:     "모스크 히다야툴라 신도의 일원이 되세요. 함께 공동체에 유익한 번영하는 모스크를 만들어 갑니다.",
     cta_btn1:     "문의하기",
     cta_btn2:     "기부하기",
+
+     // Koperasi Page
+     kop_page_title:       "히다야툴라 모스크 상점 & 협동조합",
+     kop_page_desc:        "이슬람 생활용품을 구매하고 모스크 협동조합을 통해 신도 경제를 지원하세요.",
+     kop_back:             "← 홈으로 돌아가기",
+     kop_promo_title:      "공지사항 & 프로모션",
+     kop_promo_empty:      "현재 공지사항이 없습니다.",
+     kop_filter_all:       "전체",
+     kop_search:           "상품 검색...",
+     kop_empty:            "상품을 찾을 수 없습니다.",
+     kop_price:            "가격",
+     kop_hubungi_beli:     "구매 문의",
+     kop_stok_habis:       "품절",
+     kop_tersedia:         "구매 가능",
+     kop_lihat_semua:      "전체 상품 보기",
+     kop_section_title1:   "상점 및",
+     kop_section_title2:   "협동조합",
+     kop_section_desc:     "신도들의 예배와 일상에 필요한 할랄 제품 모음.",
+     kop_section_cta:      "전체 상품 보기 →",
   },
 };
 
