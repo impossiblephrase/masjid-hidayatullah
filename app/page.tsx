@@ -23,7 +23,7 @@ const InstagramIcon = ({ className }: { className?: string }) => (
 import ScrollReveal from "../components/ScrollReveal";
 import { useLang } from "../components/LangContext";
 import { t } from "./i18n";
-import { MOSQUE, STATS, PROGRAMS, PRAYER_SCHEDULE, KOPERASI_PRODUCTS, KOPERASI_BENEFITS, GALLERY_ITEMS } from "./data";
+import { MOSQUE, PROGRAMS, KOPERASI_PRODUCTS, KOPERASI_BENEFITS, GALLERY_ITEMS } from "./data";
 import { PENGUMUMAN_MASJID, type PengumumanMasjid } from "./data";
 
 const PROGRAM_ICONS: Record<string, React.ReactNode> = {

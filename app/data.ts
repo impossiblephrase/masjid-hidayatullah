@@ -72,13 +72,7 @@ export const PROGRAMS = [
 ];
 
 // ─── Prayer Schedule ──────────────────────────────────────────────────────────
-export const PRAYER_SCHEDULE = [
-  { key: "jadwal_subuh"   as const, time_adzan: "04:35", time_iqomah: "04:50" },
-  { key: "jadwal_dzuhur"  as const, time_adzan: "12:00", time_iqomah: "12:15" },
-  { key: "jadwal_ashar"   as const, time_adzan: "15:20", time_iqomah: "15:30" },
-  { key: "jadwal_maghrib" as const, time_adzan: "17:58", time_iqomah: "18:05" },
-  { key: "jadwal_isya"    as const, time_adzan: "19:10", time_iqomah: "19:20" },
-];
+
 
 // ─── Koperasi Products ────────────────────────────────────────────────────────
 export const KOPERASI_PRODUCTS = [
