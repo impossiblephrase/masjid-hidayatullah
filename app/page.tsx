@@ -184,7 +184,7 @@ export default function Home() {
       </section>
 
       {/* ══ ABOUT ═════════════════════════════════════════════════════════════ */}
-      <section id="about" className="py-28 bg-white overflow-hidden">
+      <section id="about" className="mt-28 mb-6 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
@@ -319,8 +319,8 @@ export default function Home() {
               })}
             </div>
             <div className="mt-20 flex flex-col items-start sm:items-end gap-2">
-              <a href="/pengumuman" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-sm transition-colors">
-                        {t(lang, "pengumuman_lihat_semua")} <ArrowRight className="w-4 h-4" />
+              <a href="/pengumuman" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-md transition-colors">
+                        {t(lang, "pengumuman_lihat_semua")} <ArrowRight className="w-6 h-6" />
               </a>
             </div>
           </div>
@@ -365,8 +365,8 @@ export default function Home() {
             ))}
           </div>
           <div className="mt-20 flex flex-col items-start sm:items-end gap-2">
-            <a href="/programs" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-sm transition-colors flex-shrink-0">
-              {t(lang, "programs_lihat_semua")} <ArrowRight className="w-4 h-4" />
+            <a href="/programs" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-md transition-colors flex-shrink-0">
+              {t(lang, "programs_lihat_semua")} <ArrowRight className="w-6 h-6" />
             </a>
           </div>
         </div>
@@ -526,8 +526,8 @@ export default function Home() {
                 ))}
               </div>
               <div className="mt-10 flex flex-col items-start sm:items-start gap-2">
-              <a href="/koperasi" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-sm transition-colors flex-shrink-0">
-                {t(lang, "koperasi_lihat_semua")} <ArrowRight className="w-4 h-4" />
+              <a href="/koperasi" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-md transition-colors flex-shrink-0">
+                {t(lang, "koperasi_lihat_semua")} <ArrowRight className="w-6 h-6" />
               </a>
             </div>
             </div>
@@ -594,9 +594,6 @@ export default function Home() {
                   <em className="not-italic" style={{ color: "#15803d" }}>{t(lang, "gallery_title2")}</em>
                 </h2>
               </div>
-              <a href="/galeri" className="inline-flex items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-sm transition-colors flex-shrink-0">
-                {t(lang, "gallery_lihat_semua")} <ArrowRight className="w-4 h-4" />
-              </a>
             </div>
           </ScrollReveal>
 
@@ -619,6 +616,9 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
+            <a href="/galeri" className="inline-flex mt-20 items-center gap-2 text-green-700 hover:text-green-900 font-semibold text-md transition-colors flex-shrink-0">
+              {t(lang, "gallery_lihat_semua")} <ArrowRight className="w-6 h-6" />
+            </a>
         </div>
       </section>
 

@@ -86,7 +86,7 @@ export const TRANSLATIONS = {
     koperasi_produk:    "Produk Tersedia",
     koperasi_layanan:   "Layanan Koperasi",
     koperasi_jam:       "Jam Operasional",
-    koperasi_jam_val:   "Senin – Sabtu: 08.00 – 17.00",
+    koperasi_jam_val:   "Senin – Sabtu: 08.00 – 21.00",
     koperasi_jam_val2:  "Minggu / Hari Raya: 08.00 – 12.00",
     koperasi_benefit:   "Manfaat Bergabung",
     koperasi_cta:       "Gabung Koperasi",
@@ -115,7 +115,7 @@ export const TRANSLATIONS = {
 
     // Footer
     footer_tagline:  "Pusat ibadah dan kegiatan Islam di Jangnim, Busan. Korea Selatan.",
-    footer_links:    "Tautan",
+    footer_links:    "Hubungi Kami",
     footer_program:  "Program Masjid",
     footer_copy:     "Masjid Hidayatullah. Hak cipta dilindungi.",
     footer_social:   "Ikuti Kami",
@@ -269,7 +269,7 @@ export const TRANSLATIONS = {
     koperasi_produk:    "Available Products",
     koperasi_layanan:   "Cooperative Services",
     koperasi_jam:       "Operating Hours",
-    koperasi_jam_val:   "Mon – Sat: 08:00 – 17:00",
+    koperasi_jam_val:   "Mon – Sat: 08:00 – 21:00",
     koperasi_jam_val2:  "Sun / Holidays: 08:00 – 12:00",
     koperasi_benefit:   "Benefits of Joining",
     koperasi_cta:       "Join Cooperative",
@@ -294,7 +294,7 @@ export const TRANSLATIONS = {
     contact_placeholder_msg:   "Write your message...",
 
     footer_tagline:  "Center of Islamic worship and activities in Jangnim, Busan. South Korea.",
-    footer_links:    "Links",
+    footer_links:    "Contact Us",
     footer_program:  "Mosque Programs",
     footer_copy:     "Masjid Hidayatullah. All rights reserved.",
     footer_social:   "Follow Us",
@@ -446,7 +446,7 @@ export const TRANSLATIONS = {
     koperasi_produk:    "판매 상품",
     koperasi_layanan:   "협동조합 서비스",
     koperasi_jam:       "운영 시간",
-    koperasi_jam_val:   "월~토: 오전 8시 – 오후 5시",
+    koperasi_jam_val:   "월~토: 오전 8시 – 오후 9시",
     koperasi_jam_val2:  "일요일 / 공휴일: 오전 8시 – 낮 12시",
     koperasi_benefit:   "가입 혜택",
     koperasi_cta:       "협동조합 가입",
@@ -471,7 +471,7 @@ export const TRANSLATIONS = {
     contact_send:    "메시지 보내기",
 
     footer_tagline:  "장림동, 부산의 이슬람 예배 및 활동 중심지.",
-    footer_links:    "링크",
+    footer_links:    "문의하기",
     footer_program:  "모스크 프로그램",
     footer_copy:     "모스크 히다야툴라. 모든 권리 보유.",
     footer_social:   "팔로우하기",

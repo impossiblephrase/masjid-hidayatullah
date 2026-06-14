@@ -73,7 +73,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               {PROGRAMS.map(p => (
                 <li key={p.slug}>
-                  <a href="/#services" className="text-green-700 hover:text-green-400 transition-colors">
+                  <a href="/programs" className="text-green-700 hover:text-green-400 transition-colors">
                     {p.title[lang as keyof typeof p.title]}
                   </a>
                 </li>

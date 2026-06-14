@@ -74,7 +74,7 @@ export default function ProgramsPage() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <div className="text-white py-16 px-6"
+      <div className="text-white py-36 px-6"
            style={{ background: "linear-gradient(135deg, #052e16 0%, #15803d 100%)" }}>
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">

@@ -5,7 +5,7 @@ export const MOSQUE = {
   NAME:      "Masjid Hidayatullah",
   LOCATION:  "Jangnim, Busan. Korea Selatan",
   ADDRESS:   "328-16 Jangnim 1(il)-dong, Saha-gu, Busan, South Korea",
-  PHONE:     "+62 896-5465-9685",
+  PHONE:     "(WA) +62 896-5465-9685",
   EMAIL:     "dkm.hidayatullah@gmail.com",
   FOUNDED:   "Tahun 2000",
   FACEBOOK:  "https://www.facebook.com/MasjidHidayatullah2016",
@@ -39,7 +39,7 @@ export const PROGRAMS = [
   },
   {
     icon: "school",
-    title:    { id: "TPA / Pendidikan Al-Qur'an", en: "Quran Education (TPA)",      ko: "꾸란 교육" },
+    title:    { id: "Pendidikan Al-Qur'an", en: "Quran Education",      ko: "꾸란 교육" },
     description:     { id: "Taman Pendidikan Al-Qur'an untuk anak-anak dengan metode iqro dan tahsin.",
                 en: "Quran education center for children using the iqro and tahsin method.",
                 ko: "이크로 및 타흐신 방법을 사용한 어린이 꾸란 교육 센터." },
