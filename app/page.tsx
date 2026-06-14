@@ -356,9 +356,9 @@ export default function Home() {
                       : prog.title[lang as keyof typeof prog.title]}
                   </h3>
                   <p className="text-gray-500 text-sm leading-relaxed">
-                    {typeof prog.desc === "string"
-                      ? prog.desc
-                      : prog.desc?.[lang as keyof typeof prog.desc]}
+                    {typeof prog.description === "string"
+                      ? prog.description
+                      : prog.description?.[lang as keyof typeof prog.description]}
                   </p>
                 </div>
               </ScrollReveal>
