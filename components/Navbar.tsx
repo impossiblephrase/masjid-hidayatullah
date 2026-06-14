@@ -35,9 +35,8 @@ export default function Navbar() {
 
   const links = [
     { id: "about",    key: "nav_about"    as const },
-    { id: "pengumuman",  key: "Pengumuman"  as const },
     { id: "services", key: "nav_services" as const },
-    { id: "jadwal",   key: "Jadwal Sholat"   as const },
+    { id: "jadwal",   key: "nav_jadwal"   as const },
     { id: "koperasi", key: "nav_koperasi" as const },
     { id: "gallery",  key: "nav_gallery"  as const },
     { id: "contact",  key: "nav_contact"  as const },
